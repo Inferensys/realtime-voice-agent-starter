@@ -1,0 +1,13 @@
+{
+  "event_id": "evt_01JBRX5DPT2AEM2P",
+  "call_id": "call_01JBRX2W2B5P4Z11",
+  "type": "call.handoff_requested",
+  "timestamp": "2026-04-15T14:31:02.020Z",
+  "payload": {
+    "requested_by": "assistant_runtime",
+    "reason_code": "policy_escalation_financial_change",
+    "target_queue": "tier2-billing",
+    "last_transcript_seq": 37,
+    "context_snapshot_uri": "s3://voice/call_01JBRX2W2B5P4Z11/context.json"
+  }
+}

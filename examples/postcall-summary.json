@@ -1,0 +1,18 @@
+{
+  "event_id": "evt_01JBRX8N5J6E7Q0M",
+  "event_type": "call.post_summary_ready",
+  "call_id": "call_01JBRX2W2B5P4Z11",
+  "occurred_at": "2026-04-15T14:34:11.991Z",
+  "payload": {
+    "summary_version": "v1",
+    "summary_text": "Caller requested billing email change. Identity verified, transfer to tier2 completed.",
+    "final_disposition": "handed_off_completed",
+    "action_items": [
+      "Tier2 agent to validate domain ownership before updating billing contact."
+    ],
+    "integration_targets": [
+      "crm",
+      "ticketing"
+    ]
+  }
+}

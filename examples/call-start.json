@@ -1,0 +1,17 @@
+{
+  "call_id": "call_01JBRX2W2B5P4Z11",
+  "source": "sip",
+  "caller": {
+    "phone_e164": "+15551234567",
+    "locale": "en-US"
+  },
+  "context": {
+    "tenant": "acme-support",
+    "queue": "billing-intake",
+    "request_id": "req_9c0282"
+  },
+  "capabilities": {
+    "allow_handoff": true,
+    "allow_tool_calls": true
+  }
+}
