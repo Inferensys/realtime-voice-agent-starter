@@ -1,0 +1,18 @@
+version: "1.0"
+
+turn_control:
+  min_silence_ms_to_end_turn: 420
+  max_assistant_speech_ms: 9000
+  allow_barge_in: true
+  barge_in_cooldown_ms: 250
+
+transcript:
+  partial_retention_seconds: 30
+  require_final_segment_before_close: true
+  redact_patterns:
+    - "\\b\\d{16}\\b"
+    - "\\b\\d{3}-\\d{2}-\\d{4}\\b"
+
+latency_targets:
+  p95_first_response_ms: 1300
+  p95_barge_in_reaction_ms: 450

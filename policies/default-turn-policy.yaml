@@ -1,0 +1,20 @@
+version: 1
+policy_id: default-turn-policy
+
+interruptions:
+  allow_barge_in: true
+  cancel_assistant_audio_on_barge_in: true
+  max_consecutive_interruptions: 3
+
+handoff:
+  require_reason_code: true
+  allowed_targets:
+    - support_queue
+    - billing_queue
+    - on_call_human
+  handoff_expiry_seconds: 45
+
+events:
+  reject_duplicate_event_ids: true
+  require_monotonic_sequence_numbers: true
+

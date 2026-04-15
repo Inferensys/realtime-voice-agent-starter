@@ -1,0 +1,22 @@
+version: "1.0"
+
+handoff:
+  enabled: true
+  triggers:
+    - confidence_below: 0.62
+    - explicit_transfer_request: true
+    - policy_flag: financial_change
+  queues:
+    default: tier1
+    financial_change: tier2-billing
+    account_security: tier2-security
+  timeout_seconds: 45
+  fallback_action: create_callback_ticket
+
+permissions:
+  close_call_roles:
+    - human_agent
+    - supervisor
+  transfer_roles:
+    - assistant_runtime
+    - human_agent

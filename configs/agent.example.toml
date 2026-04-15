@@ -1,0 +1,16 @@
+[session]
+max_call_seconds = 900
+barge_in_enabled = true
+partial_transcript_flush_ms = 200
+handoff_timeout_seconds = 45
+
+[latency_budget]
+response_start_p95_ms = 900
+tts_first_chunk_p95_ms = 450
+tool_call_timeout_ms = 2500
+
+[postcall]
+summary_enabled = true
+max_retry_attempts = 5
+retry_backoff_seconds = 10
+
