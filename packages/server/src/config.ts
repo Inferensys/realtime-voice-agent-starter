@@ -1,6 +1,6 @@
 import { parse } from "@iarna/toml";
-import { readFileSync } from "node:fs";
-import { resolve } from "node:path";
+import { existsSync, readFileSync } from "node:fs";
+import { dirname, join, resolve } from "node:path";
 import { z } from "zod";
 
 const configSchema = z.object({
@@ -25,9 +25,23 @@ const configSchema = z.object({
 export type RuntimeConfig = z.infer<typeof configSchema>;
 
 export function loadRuntimeConfig(): RuntimeConfig {
-  const configPath =
-    process.env.AGENT_CONFIG_PATH ?? resolve(process.cwd(), "configs/agent.example.toml");
+  const configPath = process.env.AGENT_CONFIG_PATH ?? findDefaultConfigPath();
   const raw = readFileSync(configPath, "utf8");
   const parsed = parse(raw);
   return configSchema.parse(parsed);
+}
+
+function findDefaultConfigPath(): string {
+  let cursor = process.cwd();
+  while (true) {
+    const candidate = join(cursor, "configs", "agent.example.toml");
+    if (existsSync(candidate)) {
+      return candidate;
+    }
+    const parent = dirname(cursor);
+    if (parent === cursor) {
+      return resolve(process.cwd(), "configs/agent.example.toml");
+    }
+    cursor = parent;
+  }
 }

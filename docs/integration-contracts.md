@@ -1,61 +1,55 @@
 # Integration Contracts
 
-This file defines control-plane events emitted to downstream systems.
+Downstream systems should receive normalized events, not provider payloads.
 
-## Event envelope
-
-All integration events follow:
+## Envelope
 
 ```json
 {
   "event_id": "evt_...",
-  "event_type": "call.closed",
-  "occurred_at": "2026-04-15T14:42:15Z",
+  "event_type": "postcall.ready",
+  "occurred_at": "2026-05-12T10:00:00.000Z",
   "call_id": "call_...",
   "correlation_id": "corr_...",
   "payload": {}
 }
 ```
 
-## `call.handoff_requested`
+## Handoff
 
-Required payload fields:
+`handoff.requested`
+
+Required payload:
 
 - `requested_by`
 - `reason_code`
 - `last_transcript_seq`
 - `target_queue`
 
-## `call.handed_off`
+`handoff.accepted`
 
-Required payload fields:
+Required payload:
 
 - `agent_id`
 - `accept_time`
 - `handoff_latency_ms`
 - `context_snapshot_uri`
 
-## `call.closed`
+## Post-call
 
-Required payload fields:
+`postcall.ready`
 
-- `duration_ms`
-- `turn_count`
-- `final_disposition`
-- `transcript_uri`
-
-## `call.post_summary_ready`
-
-Required payload fields:
+Required payload:
 
 - `summary_version`
 - `summary_text`
+- `final_disposition`
 - `action_items`
 - `integration_targets`
 
-## Delivery semantics
+## Delivery Semantics
 
-- at-least-once delivery
-- idempotency by `event_id`
-- retry with exponential backoff
-- dead-letter after `max_retries`
+- At-least-once delivery.
+- Idempotency by `event_id`.
+- Retry with exponential backoff.
+- Dead-letter after configured retry limit.

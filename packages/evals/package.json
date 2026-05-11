@@ -1,0 +1,24 @@
+{
+  "name": "@inferensys/realtime-voice-evals",
+  "version": "0.2.0",
+  "description": "Scenario runner and regression checks for realtime voice agents.",
+  "license": "MIT",
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "voice-eval": "dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "eval": "tsx src/cli.ts"
+  },
+  "dependencies": {
+    "@inferensys/realtime-voice": "0.2.0",
+    "@inferensys/realtime-voice-adapters": "0.2.0"
+  }
+}

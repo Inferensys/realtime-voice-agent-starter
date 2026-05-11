@@ -1,24 +1,26 @@
 {
   "name": "realtime-voice-agent-starter",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
-  "description": "Voice-agent control plane reference service (state machine, event ingestion, handoff, post-call summary).",
+  "description": "Realtime Voice Agent Kit: TypeScript starter kit for WebRTC, telephony, realtime model APIs, STT/TTS pipelines, barge-in, handoff, evals, and post-call workflows.",
   "type": "commonjs",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
   "scripts": {
-    "dev": "tsx watch src/index.ts",
-    "build": "tsc -p tsconfig.json",
-    "start": "node dist/index.js",
-    "typecheck": "tsc --noEmit",
-    "test": "vitest run",
-    "test:watch": "vitest"
+    "build:libs": "npm -w @inferensys/realtime-voice run build && npm -w @inferensys/realtime-voice-adapters run build",
+    "dev": "npm run build:libs && npm -w @inferensys/realtime-voice-server run dev",
+    "dev:console": "npm -w @inferensys/realtime-voice-dev-console run dev",
+    "build": "npm -w @inferensys/realtime-voice run build && npm -w @inferensys/realtime-voice-adapters run build && npm -w @inferensys/realtime-voice-server run build && npm -w @inferensys/realtime-voice-evals run build && npm -w @inferensys/realtime-voice-dev-console run build",
+    "typecheck": "npm -w @inferensys/realtime-voice run typecheck && npm -w @inferensys/realtime-voice run build && npm -w @inferensys/realtime-voice-adapters run typecheck && npm -w @inferensys/realtime-voice-adapters run build && npm -w @inferensys/realtime-voice-server run typecheck && npm -w @inferensys/realtime-voice-evals run typecheck && npm -w @inferensys/realtime-voice-dev-console run typecheck",
+    "test": "npm run build && vitest run",
+    "test:watch": "vitest",
+    "eval": "npm -w @inferensys/realtime-voice-evals run eval",
+    "start": "npm -w @inferensys/realtime-voice-server run start"
   },
   "engines": {
     "node": ">=20"
-  },
-  "dependencies": {
-    "@iarna/toml": "^2.2.5",
-    "fastify": "^5.2.1",
-    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@types/node": "^22.10.7",

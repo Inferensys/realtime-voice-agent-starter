@@ -1,15 +1,17 @@
+import websocket from "@fastify/websocket";
 import Fastify, { FastifyInstance } from "fastify";
 import { z } from "zod";
+import { createProviderAdapter, knownProviders } from "@inferensys/realtime-voice-adapters";
 import { loadRuntimeConfig } from "./config";
 import {
   CallSession,
   callStartSchema,
   handoffRequestSchema,
   postCallRequestSchema,
+  providerNameSchema,
   realtimeEventSchema
-} from "./contracts";
-import { DomainError } from "./domain/errors";
-import { SessionStore } from "./domain/session-store";
+} from "@inferensys/realtime-voice";
+import { DomainError, SessionStore } from "@inferensys/realtime-voice";
 import { processRealtimeEvent, requestHandoff } from "./services/event-processor";
 import { buildPostCallSummary } from "./services/postcall";
 
@@ -38,6 +40,9 @@ function createSession(payload: z.infer<typeof callStartSchema>): CallSession {
     updatedAt: now,
     turnCount: 0,
     transcript: [],
+    events: [],
+    toolCalls: [],
+    latencyMarkers: [],
     seenEventIds: new Set<string>()
   };
 }
@@ -49,6 +54,9 @@ function sessionResponse(session: CallSession) {
     correlation_id: session.correlationId,
     turn_count: session.turnCount,
     transcript_segments: session.transcript.length,
+    events: session.events.length,
+    tool_calls: session.toolCalls.length,
+    latency_markers: session.latencyMarkers.length,
     handoff: session.handoff ?? null,
     post_summary: session.postSummary ?? null
   };
@@ -61,6 +69,7 @@ export function createApp(): FastifyInstance {
 
   app.decorate("sessionStore", store);
   app.decorate("runtimeConfig", config);
+  void app.register(websocket);
 
   app.setErrorHandler((error, _request, reply) => {
     if (error instanceof DomainError) {
@@ -78,7 +87,14 @@ export function createApp(): FastifyInstance {
     });
   });
 
-  app.get("/healthz", async () => ({ ok: true, handoff_timeout_seconds: config.session.handoff_timeout_seconds }));
+  app.get("/healthz", async () => ({
+    ok: true,
+    service: "realtime-voice-agent-kit",
+    handoff_timeout_seconds: config.session.handoff_timeout_seconds,
+    providers: knownProviders
+  }));
+
+  app.get("/api/providers", async () => ({ providers: knownProviders }));
 
   app.post("/api/calls/start", async (request, reply) => {
     const payload = callStartSchema.parse(request.body);
@@ -94,6 +110,33 @@ export function createApp(): FastifyInstance {
     processRealtimeEvent(session, payload);
     store.replace(session);
     return sessionResponse(session);
+  });
+
+  app.post("/api/webhooks/:provider", async (request) => {
+    const params = z.object({ provider: providerNameSchema }).parse(request.params);
+    const body = z.record(z.unknown()).parse(request.body);
+    const callId = z.string().min(1).parse(body.call_id ?? body.callId ?? body.streamSid);
+    const session = store.getOrThrow(callId);
+    const adapter = createProviderAdapter(params.provider);
+    const normalizedEvents = adapter.normalizeProviderEvent(body, callId);
+
+    for (const event of normalizedEvents) {
+      processRealtimeEvent(session, {
+        event_id: event.event_id,
+        call_id: event.call_id,
+        correlation_id: event.correlation_id,
+        sequence: event.sequence,
+        type: event.type,
+        timestamp: event.timestamp,
+        payload: event.payload
+      });
+    }
+
+    store.replace(session);
+    return {
+      session: sessionResponse(session),
+      events: normalizedEvents
+    };
   });
 
   app.post("/api/calls/:id/handoff", async (request) => {
@@ -118,6 +161,15 @@ export function createApp(): FastifyInstance {
       payload.integration_targets
     );
     session.postSummary = envelope;
+    session.events.push({
+      event_id: envelope.event_id,
+      call_id: session.callId,
+      provider: "fake",
+      type: "postcall.ready",
+      timestamp: envelope.occurred_at,
+      correlation_id: envelope.correlation_id,
+      payload: { ...envelope.payload }
+    });
     store.replace(session);
     return {
       session: sessionResponse(session),
@@ -134,6 +186,38 @@ export function createApp(): FastifyInstance {
       transcript: session.transcript,
       turn_count: session.turnCount
     };
+  });
+
+  app.get("/api/calls/:id/replay", async (request) => {
+    const params = z.object({ id: z.string().min(1) }).parse(request.params);
+    const session = store.getOrThrow(params.id);
+    return {
+      call_id: session.callId,
+      state: session.state,
+      events: session.events,
+      transcript: session.transcript,
+      tool_calls: session.toolCalls,
+      latency_markers: session.latencyMarkers,
+      post_summary: session.postSummary ?? null
+    };
+  });
+
+  app.get("/api/calls", async () => ({
+    calls: store.list().map(sessionResponse)
+  }));
+
+  app.get("/api/realtime/:provider", { websocket: true }, (socket, request) => {
+    const params = z.object({ provider: providerNameSchema }).parse(request.params);
+    socket.on("message", (message) => {
+      const receivedBytes = Array.isArray(message)
+        ? message.reduce((total, chunk) => total + chunk.byteLength, 0)
+        : Buffer.byteLength(message);
+      socket.send(JSON.stringify({
+        type: "provider.ready",
+        provider: params.provider,
+        received_bytes: receivedBytes
+      }));
+    });
   });
 
   return app;

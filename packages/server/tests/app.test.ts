@@ -102,7 +102,7 @@ describe("voice control plane", () => {
       }
     });
     expect(postcall.statusCode).toBe(200);
-    expect(postcall.json().envelope.event_type).toBe("call.post_summary_ready");
+    expect(postcall.json().envelope.event_type).toBe("postcall.ready");
   });
 
   it("rejects duplicate realtime events", async () => {
@@ -252,4 +252,3 @@ describe("voice control plane", () => {
     expect(assistantAfterHandoff.json().code).toBe("assistant_turn_forbidden_after_handoff");
   });
 });
-

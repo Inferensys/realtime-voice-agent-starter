@@ -2,12 +2,12 @@
   "event_id": "evt_01JBRX4A10P8W8CT",
   "call_id": "call_01JBRX2W2B5P4Z11",
   "sequence": 24,
-  "type": "transcript.partial",
+  "type": "transcript.final",
   "timestamp": "2026-04-15T14:30:19.332Z",
   "payload": {
     "speaker": "caller",
     "text": "I need to update the billing email on our account",
     "confidence": 0.94,
-    "is_final": false
+    "is_final": true
   }
 }

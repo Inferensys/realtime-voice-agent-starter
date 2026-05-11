@@ -1,4 +1,4 @@
-import { CallSession } from "../contracts";
+import { CallSession, NormalizedVoiceEvent } from "./contracts";
 import { DomainError } from "./errors";
 
 export class SessionStore {
@@ -23,5 +23,20 @@ export class SessionStore {
   replace(session: CallSession): CallSession {
     this.sessions.set(session.callId, session);
     return session;
+  }
+
+  appendEvent(callId: string, event: NormalizedVoiceEvent): NormalizedVoiceEvent {
+    const session = this.getOrThrow(callId);
+    session.events.push(event);
+    this.replace(session);
+    return event;
+  }
+
+  listEvents(callId: string): NormalizedVoiceEvent[] {
+    return [...this.getOrThrow(callId).events];
+  }
+
+  list(): CallSession[] {
+    return [...this.sessions.values()];
   }
 }

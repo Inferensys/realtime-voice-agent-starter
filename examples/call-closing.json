@@ -1,0 +1,8 @@
+{
+  "event_id": "evt_01JBRX4A10P8W8CU",
+  "call_id": "call_01JBRX2W2B5P4Z11",
+  "sequence": 25,
+  "type": "call.closing",
+  "timestamp": "2026-04-15T14:31:19.332Z",
+  "payload": {}
+}

@@ -2,8 +2,8 @@ import {
   CallSession,
   IntegrationEventEnvelope,
   PostSummaryPayload
-} from "../contracts";
-import { DomainError } from "../domain/errors";
+} from "@inferensys/realtime-voice";
+import { DomainError } from "@inferensys/realtime-voice";
 
 function nowIso(): string {
   return new Date().toISOString();
@@ -42,7 +42,7 @@ export function buildPostCallSummary(
 
   return {
     event_id: createEventId("evt_post_summary"),
-    event_type: "call.post_summary_ready",
+    event_type: "postcall.ready",
     occurred_at: nowIso(),
     call_id: session.callId,
     correlation_id: session.correlationId ?? "corr_unset",

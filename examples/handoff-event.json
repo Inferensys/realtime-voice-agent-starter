@@ -7,7 +7,7 @@
     "requested_by": "assistant_runtime",
     "reason_code": "policy_escalation_financial_change",
     "target_queue": "tier2-billing",
-    "last_transcript_seq": 37,
+    "last_transcript_seq": 24,
     "context_snapshot_uri": "s3://voice/call_01JBRX2W2B5P4Z11/context.json"
   }
 }

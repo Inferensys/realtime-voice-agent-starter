@@ -1,0 +1,15 @@
+{
+  "name": "@inferensys/realtime-voice-dev-console",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Local console for inspecting realtime voice sessions.",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@inferensys/realtime-voice": "0.2.0"
+  }
+}

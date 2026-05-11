@@ -1,0 +1,26 @@
+{
+  "name": "@inferensys/realtime-voice-server",
+  "version": "0.2.0",
+  "description": "Fastify control plane for the Realtime Voice Agent Kit.",
+  "license": "MIT",
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@fastify/websocket": "^11.0.1",
+    "@iarna/toml": "^2.2.5",
+    "@inferensys/realtime-voice": "0.2.0",
+    "@inferensys/realtime-voice-adapters": "0.2.0",
+    "fastify": "^5.2.1",
+    "zod": "^3.24.1"
+  }
+}

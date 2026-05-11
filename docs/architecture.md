@@ -1,45 +1,60 @@
-# Architecture Notes
+# Architecture
 
-## System split
+Realtime Voice Agent Kit separates provider plumbing from call correctness.
 
-The runtime separates media-plane and control-plane responsibilities:
+## Layers
 
-- Media plane
-  - receives/sends audio frames
-  - performs ASR/TTS streaming
-  - measures jitter, packet loss, and end-to-end turn latency
-- Control plane
-  - maintains call session state machine
-  - orchestrates tool calls and handoff transitions
-  - emits durable events for transcript and post-call workflows
+1. **Provider adapters**
+   - Convert OpenAI, Azure OpenAI, Gemini, Twilio, LiveKit, Deepgram, ElevenLabs, Cartesia, AssemblyAI, or fake/local events into one event model.
+   - No business rules live here.
 
-## Core components
+2. **Control plane**
+   - Fastify HTTP/WebSocket service.
+   - Owns call session state, idempotency, sequence guards, handoff, replay, transcript access, and post-call event generation.
 
-1. Session gateway
-   - accepts call start and auth context
-   - allocates `call_id` and correlation ids
-2. Realtime orchestrator
-   - handles partial/final transcript segments
-   - decides assistant turn boundaries
-3. Policy engine
-   - enforces interruption and escalation policy
-4. Handoff broker
-   - creates human transfer requests
-   - tracks accept/decline/timeouts
-5. Event sink
-   - persists ordered call events for replay
-6. Post-call worker
-   - builds summary payload and dispatches integrations
+3. **Core runtime**
+   - Package-level contracts for events, sessions, tools, policies, runtime definitions, transcripts, and stores.
+   - Used by server, adapters, evals, and application code.
 
-## Latency-critical path
+4. **Evals**
+   - Synthetic call scenarios that catch the bugs teams usually find in production: interruptions, duplicate events, tool failures, slow responses, handoff drift, and post-call race conditions.
 
-`audio_in -> partial_asr -> turn_decision -> response_start`
+5. **Dev console**
+   - Local browser view for event timelines, transcripts, tool calls, latency markers, and handoff state.
 
-Instrument at each segment with monotonic timestamps. Regression gates should fail when p95 response start latency exceeds configured target.
+## Event Flow
 
-## Data contract entrypoints
+```text
+provider payload
+  -> adapter.normalizeProviderEvent()
+  -> POST /api/calls/:id/events or POST /api/webhooks/:provider
+  -> processRealtimeEvent()
+  -> session.events + transcript + tool calls + latency markers
+  -> /api/calls/:id/replay
+```
 
-- start call: `examples/call-start.json`
-- realtime events: `examples/realtime-event.json`
-- handoff: `examples/handoff-event.json`
-- post-call summary: `examples/postcall-summary.json`
+## Latency Path
+
+Track these markers per call:
+
+- `first-token`
+- `first-audio`
+- `user-stop-to-agent-start`
+- `interruption-cancel`
+- `handoff-latency`
+
+The kit does not hide these inside provider logs. They are first-class events so CI, replay, and dashboards can read them the same way.
+
+## Handoff Path
+
+Handoff is explicit:
+
+```text
+active -> escalated -> handoff_pending -> handed_off
+```
+
+After `handed_off`, assistant-generated transcript turns are rejected. That prevents the voice agent from continuing after a human has taken over.
+
+## Storage
+
+The starter ships with an in-memory session store. The interface is intentionally small: create, get, replace, list, append events, and replay. SQLite and Postgres implementations can be added without changing adapters or evals.
