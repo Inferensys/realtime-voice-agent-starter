@@ -208,10 +208,8 @@ export function createApp(): FastifyInstance {
 
   app.get("/api/realtime/:provider", { websocket: true }, (socket, request) => {
     const params = z.object({ provider: providerNameSchema }).parse(request.params);
-    socket.on("message", (message) => {
-      const receivedBytes = Array.isArray(message)
-        ? message.reduce((total, chunk) => total + chunk.byteLength, 0)
-        : Buffer.byteLength(message);
+    socket.on("message", (message: unknown) => {
+      const receivedBytes = messageByteLength(message);
       socket.send(JSON.stringify({
         type: "provider.ready",
         provider: params.provider,
@@ -221,4 +219,25 @@ export function createApp(): FastifyInstance {
   });
 
   return app;
+}
+
+function messageByteLength(message: unknown): number {
+  if (Array.isArray(message)) {
+    return message.reduce((total, chunk) => {
+      return total + (Buffer.isBuffer(chunk) ? chunk.byteLength : 0);
+    }, 0);
+  }
+  if (typeof message === "string") {
+    return Buffer.byteLength(message);
+  }
+  if (Buffer.isBuffer(message)) {
+    return message.byteLength;
+  }
+  if (message instanceof ArrayBuffer) {
+    return message.byteLength;
+  }
+  if (ArrayBuffer.isView(message)) {
+    return message.byteLength;
+  }
+  return 0;
 }
