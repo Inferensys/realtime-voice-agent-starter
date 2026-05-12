@@ -1,12 +1,8 @@
 ![Cover](assets/cover.svg)
 
-# Realtime Voice Agent Kit
+This is a starter kit for implementing Realtime Voice AI applications handling: interruptions, handoff, tool calls, transcript consistency, post-call events, replay, and regression tests.
 
-Most voice-agent demos stop once audio comes out of the speaker.
-
-This kit starts where demos usually break: interruptions, handoff, tool calls, transcript consistency, post-call events, replay, and regression tests.
-
-It is a TypeScript starter kit for production voice agents across WebRTC, telephony, realtime model APIs, STT/TTS pipelines, barge-in, human handoff, evals, and post-call workflows.
+It is based in TypeScript for production voice agents across WebRTC, telephony, realtime model APIs, STT/TTS pipelines, barge-in, human handoff, evals, and post-call workflows.
 
 ## Demo
 
@@ -208,7 +204,6 @@ The split is deliberate:
 
 | Provider | Current support | Notes |
 | --- | --- | --- |
-| Fake/local | Event adapter | Used by tests, evals, and local workflows |
 | OpenAI Realtime | Event adapter | Audio, transcript, interruption, and tool-call event mapping |
 | Azure OpenAI Realtime | Event adapter + WebSocket audio helper | Streams PCM16 audio to a realtime deployment and captures audio/transcript output |
 | Gemini Live | Event adapter | Transcript, interruption, and output event mapping |
@@ -237,21 +232,23 @@ These adapters normalize provider events into the kit’s event model. The examp
 
 ## Examples
 
-Each example has an `.env.example` and README:
+Each example has an `.env.example`, README, and runnable entrypoint:
 
-- `examples/browser-openai-realtime`
-- `examples/twilio-openai-realtime`
-- `examples/azure-openai-realtime`
-- `examples/gemini-live`
-- `examples/livekit-room-agent`
-- `examples/chained-pipeline`
-- `examples/elevenlabs-agent-bridge`
-- `examples/assemblyai-redaction`
-- `examples/support-escalation`
-- `examples/appointment-booking`
-- `examples/postcall-webhook`
+| Example | What it shows |
+| --- | --- |
+| `examples/browser-openai-realtime` | Browser WebRTC voice agent with server-side ephemeral Realtime sessions |
+| `examples/twilio-openai-realtime` | Twilio Media Streams edge with normalized replay events |
+| `examples/azure-openai-realtime` | Azure OpenAI Realtime audio-in/audio-out turn |
+| `examples/gemini-live` | Gemini Live provider event mapping |
+| `examples/livekit-room-agent` | LiveKit room transcript and handoff events |
+| `examples/chained-pipeline` | Deepgram STT + OpenAI-style tool call + Cartesia TTS timeline |
+| `examples/elevenlabs-agent-bridge` | ElevenLabs conversation event bridge |
+| `examples/assemblyai-redaction` | AssemblyAI transcript events with redaction metadata |
+| `examples/support-escalation` | Handoff request and accepted-agent flow |
+| `examples/appointment-booking` | Tool call lifecycle for scheduling agents |
+| `examples/postcall-webhook` | Closed-call summary and downstream webhook delivery |
 
-The examples are intentionally thin. The important part is that every path emits the same normalized event timeline.
+Every path emits the same normalized event timeline, so you can swap providers without rewriting replay, evals, handoff, or post-call logic.
 
 ## Evals
 
@@ -274,17 +271,10 @@ npm run eval
 
 Use evals in CI before changing prompts, providers, tools, or handoff policy.
 
-## Docs
+## Work With Us
 
-- `docs/architecture.md`
-- `docs/event-model.md`
-- `docs/adapter-guide.md`
-- `docs/eval-guide.md`
-- `docs/deployment-guide.md`
-- `docs/session-state-machine.md`
-- `docs/integration-contracts.md`
-- `docs/validation-matrix.md`
+We build products like this for teams that want to integrate intelligence into their workflows.
 
-## License
+![Inferensys](https://raw.githubusercontent.com/Inferensys/northwall/main/docs/inferensys.svg)
 
-MIT
+Talk to [Inferensys](https://inferensys.com/) or contact us at [inferensys.com/contact](https://inferensys.com/contact).

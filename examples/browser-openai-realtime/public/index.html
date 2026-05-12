@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Browser OpenAI Realtime</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #111114;
+        --muted: #62656f;
+        --line: #e8e8ec;
+        --paper: #ffffff;
+        --soft: #f5f6f8;
+        --mint: #34e8ba;
+        --cherokee: #f0cc8c;
+        --portage: #a1a5f8;
+        --danger: #ef4444;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: #dde3ea;
+        color: var(--ink);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      .shell {
+        width: min(1120px, calc(100vw - 40px));
+        margin: 40px auto;
+        background: var(--paper);
+        border: 1px solid rgba(17, 17, 20, 0.12);
+        box-shadow: 0 24px 80px rgba(17, 17, 20, 0.12);
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 64px;
+        padding: 0 24px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font: 700 15px/1 "Google Sans Code", "IBM Plex Mono", ui-monospace, monospace;
+      }
+
+      .mark {
+        width: 22px;
+        height: 22px;
+        display: grid;
+        place-items: center;
+        background: var(--ink);
+        color: #fff;
+        border-radius: 5px;
+        font-size: 12px;
+      }
+
+      .status {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: #c3c6cf;
+      }
+
+      .dot.live {
+        background: var(--mint);
+      }
+
+      main {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(340px, 0.9fr);
+        min-height: 640px;
+      }
+
+      .left {
+        padding: 36px 32px;
+        border-right: 1px solid var(--line);
+      }
+
+      h1 {
+        max-width: 680px;
+        margin: 0 0 16px;
+        font: 600 clamp(44px, 7vw, 82px)/0.95 Georgia, "Times New Roman", serif;
+        letter-spacing: -0.04em;
+      }
+
+      .lede {
+        max-width: 620px;
+        margin: 0 0 32px;
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.55;
+      }
+
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 32px;
+      }
+
+      button {
+        min-height: 44px;
+        padding: 0 18px;
+        border: 1px solid var(--ink);
+        background: var(--ink);
+        color: #fff;
+        font: 700 13px/1 "Google Sans Code", "IBM Plex Mono", ui-monospace, monospace;
+        cursor: pointer;
+      }
+
+      button.secondary {
+        background: #fff;
+        color: var(--ink);
+      }
+
+      button:disabled {
+        border-color: #cfd2d8;
+        background: #e7e9ee;
+        color: #7d818b;
+        cursor: not-allowed;
+      }
+
+      .meter {
+        height: 180px;
+        display: flex;
+        align-items: end;
+        gap: 5px;
+        padding: 24px 0 0;
+        border-top: 1px solid var(--line);
+        overflow: hidden;
+      }
+
+      .bar {
+        width: 7px;
+        min-height: 18px;
+        background: #dcdfe5;
+      }
+
+      .bar.hot {
+        background: var(--mint);
+      }
+
+      .right {
+        display: grid;
+        grid-template-rows: auto minmax(0, 1fr) auto;
+        min-width: 0;
+      }
+
+      .panel {
+        padding: 24px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .label {
+        margin-bottom: 10px;
+        color: var(--muted);
+        font: 700 11px/1.2 "Google Sans Code", "IBM Plex Mono", ui-monospace, monospace;
+        text-transform: uppercase;
+      }
+
+      .agent {
+        display: grid;
+        gap: 8px;
+        margin: 0;
+      }
+
+      .agent dt {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .agent dd {
+        margin: 0;
+        font-size: 14px;
+      }
+
+      .timeline {
+        min-height: 0;
+        overflow: auto;
+        padding: 16px 24px;
+        background: var(--soft);
+      }
+
+      .event {
+        padding: 12px 0;
+        border-bottom: 1px solid #e0e2e7;
+        font-size: 13px;
+      }
+
+      .event strong {
+        display: block;
+        margin-bottom: 4px;
+        font: 700 12px/1.2 "Google Sans Code", "IBM Plex Mono", ui-monospace, monospace;
+      }
+
+      .event span {
+        color: var(--muted);
+      }
+
+      .transcript {
+        min-height: 104px;
+        padding: 18px 24px;
+        border-top: 1px solid var(--line);
+        font-size: 15px;
+        line-height: 1.5;
+      }
+
+      .error {
+        color: var(--danger);
+      }
+
+      audio {
+        display: none;
+      }
+
+      @media (max-width: 860px) {
+        .shell {
+          width: 100%;
+          margin: 0;
+          min-height: 100vh;
+          border-left: 0;
+          border-right: 0;
+        }
+
+        main {
+          grid-template-columns: 1fr;
+        }
+
+        .left {
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <header>
+        <div class="brand"><span class="mark">rv</span> Realtime Voice Agent Kit</div>
+        <div class="status"><span id="dot" class="dot"></span><span id="status">idle</span></div>
+      </header>
+
+      <main>
+        <section class="left">
+          <h1>Browser voice agent, wired for replay.</h1>
+          <p class="lede">
+            This example uses OpenAI Realtime over WebRTC, keeps credentials on the server,
+            and forwards normalized events to the shared call timeline.
+          </p>
+
+          <div class="controls">
+            <button id="start">Start call</button>
+            <button id="stop" class="secondary" disabled>Stop</button>
+            <button id="replay" class="secondary" disabled>Fetch replay</button>
+          </div>
+
+          <div id="meter" class="meter" aria-label="Audio activity meter"></div>
+        </section>
+
+        <aside class="right">
+          <div class="panel">
+            <div class="label">Agent</div>
+            <dl class="agent">
+              <dt>Name</dt>
+              <dd id="agent-name">Loading</dd>
+              <dt>Model</dt>
+              <dd id="agent-model">Loading</dd>
+              <dt>Voice</dt>
+              <dd id="agent-voice">Loading</dd>
+            </dl>
+          </div>
+
+          <div id="timeline" class="timeline"></div>
+
+          <div id="transcript" class="transcript">Transcript appears here after the call starts.</div>
+        </aside>
+      </main>
+    </div>
+
+    <audio id="remote-audio" autoplay></audio>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
