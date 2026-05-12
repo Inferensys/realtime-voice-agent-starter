@@ -12,6 +12,7 @@
     "build:libs": "npm -w @inferensys/realtime-voice run build && npm -w @inferensys/realtime-voice-adapters run build",
     "dev": "npm run build:libs && npm -w @inferensys/realtime-voice-server run dev",
     "dev:console": "npm -w @inferensys/realtime-voice-dev-console run dev",
+    "demo:azure": "node scripts/run-azure-demo.mjs && python3 scripts/render-demo-assets.py",
     "build": "npm -w @inferensys/realtime-voice run build && npm -w @inferensys/realtime-voice-adapters run build && npm -w @inferensys/realtime-voice-server run build && npm -w @inferensys/realtime-voice-evals run build && npm -w @inferensys/realtime-voice-dev-console run build",
     "typecheck": "npm -w @inferensys/realtime-voice run typecheck && npm -w @inferensys/realtime-voice run build && npm -w @inferensys/realtime-voice-adapters run typecheck && npm -w @inferensys/realtime-voice-adapters run build && npm -w @inferensys/realtime-voice-server run typecheck && npm -w @inferensys/realtime-voice-evals run typecheck && npm -w @inferensys/realtime-voice-dev-console run typecheck",
     "test": "npm run build && vitest run",

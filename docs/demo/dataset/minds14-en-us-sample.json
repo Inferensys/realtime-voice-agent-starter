@@ -1,0 +1,53 @@
+{
+  "source": "PolyAI/minds14",
+  "source_url": "https://huggingface.co/datasets/PolyAI/minds14",
+  "license": "cc-by-4.0",
+  "config": "en-US",
+  "split": "train",
+  "rows": [
+    {
+      "id": "minds14_1",
+      "row_idx": 0,
+      "source_path": "en-US~JOINT_ACCOUNT/602ba55abb1e6d0fbce92065.wav",
+      "audio_url": "https://datasets-server.huggingface.co/cached-assets/PolyAI/minds14/--/40ce77cb32a384e4d50a568e1ec39ac804019d33/--/en-US/train/0/audio/audio.wav?Expires=1778566759&Signature=NfnavzjnAK3LhUvsEBYC-DHSMwfGkwzlaESlhqFwTv-mYXvrV41bL9yzUO3aVq3rLygbC-gCnQzEXNqptxLal8Ld4hwrMwDyHDMDvwp~yXWp3PDjpyrXof9B9~TYWBS~ZeSLf4PcgMAh0UYrFW-UHvFugxDh5Mk5EVB0aa7ecfRt54Lbc~9QCzdEaqm2jnOZX-TF1EAV-vDVJlXN52pmPIfa3FeYyvBfaa1AYuWy2V~ys-rgmPu9QAkca328Ot8zo7l1joulOrgX57NeZN3vTGrCTvZqsjV-nm~WjkCRhgB5TLjN2x3UNuDJWQ2mY9GwujH0B1Y9rNnZpA63ayojhg__&Key-Pair-Id=K204OQ5RWQVDLD",
+      "audio_type": "audio/wav",
+      "transcription": "I would like to set up a joint account with my partner",
+      "intent_class": 11,
+      "lang_id": 4,
+      "local_audio": "docs/demo/dataset/audio/minds14_1.wav"
+    },
+    {
+      "id": "minds14_2",
+      "row_idx": 1,
+      "source_path": "en-US~JOINT_ACCOUNT/602baf24bb1e6d0fbce922a7.wav",
+      "audio_url": "https://datasets-server.huggingface.co/cached-assets/PolyAI/minds14/--/40ce77cb32a384e4d50a568e1ec39ac804019d33/--/en-US/train/1/audio/audio.wav?Expires=1778566759&Signature=ogGb5qs-fZatIZuyKT7FY0NcOOdB6IyOQNYyEELJ3Qw6smdHJ8UN5DvONavlwSNw-GFA~e9DU6jCGFAqRvdGvegbF1dNhmgQE46waAV1cu0CpfMP-aDfgYi1e6s0p27UbcyM4lt5XIqt7vrPf6XaLmiUgxAMxVIfg-Vf5bWny9Y~xr~aTYKAUPuz25Bv0tiDdVr4gT~LlVyHumW8Nu0wMG1zBBm-5M0zKBZudQF8YOOtSbXzr1J0Ld3xFzQG1uki-RIxez5VT~t7UlIj3YCW0HSUi6eomZNACgtXvDl0kTncMNisEg30QbP9taTd6vW44NxaBOyzFm~ENxtdw2XuPg__&Key-Pair-Id=K204OQ5RWQVDLD",
+      "audio_type": "audio/wav",
+      "transcription": "Henry County set up a joint account with my wife and where are they at",
+      "intent_class": 11,
+      "lang_id": 4,
+      "local_audio": "docs/demo/dataset/audio/minds14_2.wav"
+    },
+    {
+      "id": "minds14_3",
+      "row_idx": 2,
+      "source_path": "en-US~JOINT_ACCOUNT/602b9f97963e11ccd901cc32.wav",
+      "audio_url": "https://datasets-server.huggingface.co/cached-assets/PolyAI/minds14/--/40ce77cb32a384e4d50a568e1ec39ac804019d33/--/en-US/train/2/audio/audio.wav?Expires=1778566759&Signature=0T~WhRDF87pl6BAecCQjE9tRCa1uJHXpqbGWycifSPZA-k~4b5q26Gck0pk~h0aXh1tpDPVdbUTIIaVXVOPHxiPSysSehenvZvt79IOvbMm3tTR6Vwo89B6EMvoSvJ~U0MV0xpqpK5TEooc34~Ykeu7nPllSEN44N762hk5G8Pt1qKM7-sJxe9~t~zshu8D~8f7UjV0F2lPYQ36-dp1571gfp9Ab-nLZ7efvdH~jj5zcvufYGs95-Q~pCWHePwTaWXJ7uDE8ZP7jSOXYdTVPMqvSyXdfoWsYzvj1G4aLlkkuE~z8B0Qsf9RbO0oxDn-~JS2WK1Wys9qKTcQ1MgiQAA__&Key-Pair-Id=K204OQ5RWQVDLD",
+      "audio_type": "audio/wav",
+      "transcription": "hi I'd like to set up a joint account with my partner I'm not seeing the option to do it on the app so I called in to get some help can I do it over the phone with you and give you the information",
+      "intent_class": 11,
+      "lang_id": 4,
+      "local_audio": "docs/demo/dataset/audio/minds14_3.wav"
+    },
+    {
+      "id": "minds14_4",
+      "row_idx": 3,
+      "source_path": "en-US~JOINT_ACCOUNT/602bacab5f67b421554f6488.wav",
+      "audio_url": "https://datasets-server.huggingface.co/cached-assets/PolyAI/minds14/--/40ce77cb32a384e4d50a568e1ec39ac804019d33/--/en-US/train/3/audio/audio.wav?Expires=1778566759&Signature=kxlOPMV0kRWb-3CJqRgrY46TUbsc6C7jzsh2W3cHazYjelHFgPSBD07SnuZ5PJVof6JYKMrnadYbvFQssPu-oYSYe3y5LLJofDWg03wwF5XQE0Jsm-cbA8sLm0V-Co0du9hFgN-dJySRZRf-1dCA6NLQhUGO6l2JntjS4sLS9qpTH-532FLQ5AaLq0fvHQBY3oVXj5Pye2zYxdcbFFkLtArJ-D-27oTGtcKOpJupxPVtvx5W3wP5peZMBvPqLrlAgF3sntZOfZfyKaXJP~urD6yehUVw1tT44aJagbv6Qn0FlDFiqkFz9B34b9t7Vq7scM8JtB9AWEKVngd5gIVYsQ__&Key-Pair-Id=K204OQ5RWQVDLD",
+      "audio_type": "audio/wav",
+      "transcription": "how do I start a joint account",
+      "intent_class": 11,
+      "lang_id": 4,
+      "local_audio": "docs/demo/dataset/audio/minds14_4.wav"
+    }
+  ]
+}

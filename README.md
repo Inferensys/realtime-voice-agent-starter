@@ -1,3 +1,5 @@
+![Cover](assets/cover.svg)
+
 # Realtime Voice Agent Kit
 
 Most voice-agent demos stop once audio comes out of the speaker.
@@ -5,6 +7,39 @@ Most voice-agent demos stop once audio comes out of the speaker.
 This kit starts where demos usually break: interruptions, handoff, tool calls, transcript consistency, post-call events, replay, and regression tests.
 
 It is a TypeScript starter kit for production voice agents across WebRTC, telephony, realtime model APIs, STT/TTS pipelines, barge-in, human handoff, evals, and post-call workflows.
+
+## Demo
+
+This demo uses a small sample from [PolyAI/minds14](https://huggingface.co/datasets/PolyAI/minds14), a CC BY 4.0 spoken banking dataset, and runs it through Azure Foundry with `gpt-5.5`. The model plans the call handling, the local Fastify control plane replays normalized voice events, and the output is written to `docs/demo`.
+
+![Azure Foundry demo overview](docs/demo/screenshots/azure-demo-overview.png)
+
+![Normalized event replay](docs/demo/screenshots/azure-demo-timeline.png)
+
+![Demo output](docs/demo/screenshots/azure-demo-output.png)
+
+Video:
+
+[Watch the MP4 walkthrough](docs/demo/realtime-voice-agent-demo.mp4)
+
+<video src="docs/demo/realtime-voice-agent-demo.mp4" controls></video>
+
+Direct files:
+
+- `docs/demo/realtime-voice-agent-demo.mp4`
+- `docs/demo/azure-foundry-demo.md`
+- `docs/demo/azure-foundry-demo.json`
+- `docs/demo/output/replays.json`
+
+Run it again:
+
+```bash
+AZURE_AI_RESOURCE_GROUP=<resource-group> \
+AZURE_AI_RESOURCE_NAME=<foundry-resource-name> \
+OPENAI_BASE_URL=https://<resource>.services.ai.azure.com/openai/v1 \
+OPENAI_MODEL=gpt-5.5 \
+npm run demo:azure
+```
 
 ## Why This Exists
 
@@ -239,20 +274,6 @@ Use evals in CI before changing prompts, providers, tools, or handoff policy.
 - `docs/session-state-machine.md`
 - `docs/integration-contracts.md`
 - `docs/validation-matrix.md`
-
-## Repo Description
-
-Suggested GitHub description:
-
-```text
-TypeScript starter kit for production voice agents: WebRTC, telephony, realtime model APIs, STT/TTS pipelines, barge-in, handoff, evals, and post-call workflows.
-```
-
-Suggested topics:
-
-```text
-voice-ai, voice-agents, realtime-voice, realtime-audio, speech-to-speech, openai-realtime, azure-openai, gemini-live, twilio-media-streams, livekit, webrtc, deepgram, elevenlabs, cartesia, assemblyai, barge-in, handoff, voice-agent-evals, fastify, typescript
-```
 
 ## License
 

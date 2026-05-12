@@ -1,0 +1,40 @@
+<svg width="1500" height="500" viewBox="0 0 1500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1500" height="500" fill="#061912"/>
+  <rect x="72" y="70" width="1356" height="360" rx="22" fill="#F8FAF7"/>
+  <g opacity="0.42">
+    <path d="M118 214H1382" stroke="#D8E2DC"/>
+    <path d="M118 244H1382" stroke="#D8E2DC"/>
+    <path d="M118 274H1382" stroke="#D8E2DC"/>
+    <path d="M118 304H1382" stroke="#D8E2DC"/>
+  </g>
+  <g>
+    <rect x="126" y="116" width="86" height="86" rx="16" fill="#061912"/>
+    <path d="M151 174H187" stroke="#F8FAF7" stroke-width="7"/>
+    <path d="M151 158H196" stroke="#F8FAF7" stroke-width="7"/>
+    <path d="M151 142H178" stroke="#F8FAF7" stroke-width="7"/>
+    <path d="M187 174L202 158" stroke="#21A987" stroke-width="7"/>
+    <path d="M196 158L207 142" stroke="#21A987" stroke-width="7"/>
+  </g>
+  <g opacity="0.76">
+    <path d="M268 160H736" stroke="#CBD7D0"/>
+    <path d="M268 184H816" stroke="#CBD7D0"/>
+    <path d="M268 208H666" stroke="#CBD7D0"/>
+    <path d="M268 232H926" stroke="#CBD7D0"/>
+  </g>
+  <g>
+    <path d="M992 144V344" stroke="#CBD7D0"/>
+    <path d="M1018 164V344" stroke="#CBD7D0"/>
+    <path d="M1044 188V344" stroke="#CBD7D0"/>
+    <path d="M1070 150V344" stroke="#21A987" stroke-width="3"/>
+    <path d="M1096 170V344" stroke="#21A987" stroke-width="3"/>
+    <path d="M1122 206V344" stroke="#21A987" stroke-width="3"/>
+    <path d="M1148 190V344" stroke="#CBD7D0"/>
+    <path d="M1174 218V344" stroke="#CBD7D0"/>
+    <path d="M1200 244V344" stroke="#CBD7D0"/>
+    <path d="M1226 260V344" stroke="#CBD7D0"/>
+    <path d="M1252 286V344" stroke="#CBD7D0"/>
+    <path d="M1278 304V344" stroke="#CBD7D0"/>
+  </g>
+  <text x="126" y="330" fill="#061912" font-family="Inter, Arial, sans-serif" font-size="52" font-weight="700">Realtime Voice Agent Kit</text>
+  <text x="126" y="376" fill="#53645C" font-family="Inter, Arial, sans-serif" font-size="24">WebRTC, telephony, realtime model APIs, STT/TTS pipelines, handoff, evals, and replay.</text>
+</svg>

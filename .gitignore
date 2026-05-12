@@ -10,4 +10,4 @@ build/
 coverage/
 .next/
 *.log
-
+.tmp/
