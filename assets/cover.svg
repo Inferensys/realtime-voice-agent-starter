@@ -1,40 +1,31 @@
 <svg width="1500" height="500" viewBox="0 0 1500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1500" height="500" fill="#061912"/>
-  <rect x="72" y="70" width="1356" height="360" rx="22" fill="#F8FAF7"/>
-  <g opacity="0.42">
-    <path d="M118 214H1382" stroke="#D8E2DC"/>
-    <path d="M118 244H1382" stroke="#D8E2DC"/>
-    <path d="M118 274H1382" stroke="#D8E2DC"/>
-    <path d="M118 304H1382" stroke="#D8E2DC"/>
+  <rect width="1500" height="500" fill="#111114"/>
+  <rect x="78" y="64" width="1344" height="372" rx="10" fill="#FFFFFF"/>
+  <rect x="78" y="64" width="1344" height="14" fill="#3AE68A"/>
+  <rect x="420" y="64" width="300" height="14" fill="#A1A5F8"/>
+  <rect x="720" y="64" width="316" height="14" fill="#F0CC8C"/>
+  <rect x="1036" y="64" width="386" height="14" fill="#D860F4"/>
+  <rect x="126" y="124" width="104" height="104" rx="12" fill="#111114"/>
+  <path d="M152 195H194" stroke="#FFFFFF" stroke-width="8"/>
+  <path d="M152 176H208" stroke="#FFFFFF" stroke-width="8"/>
+  <path d="M152 157H186" stroke="#FFFFFF" stroke-width="8"/>
+  <path d="M194 195L214 176" stroke="#3AE68A" stroke-width="8"/>
+  <path d="M208 176L222 157" stroke="#A1A5F8" stroke-width="8"/>
+  <g opacity="0.9">
+    <path d="M288 147H680" stroke="#D9DEE5" stroke-width="2"/>
+    <path d="M288 176H768" stroke="#D9DEE5" stroke-width="2"/>
+    <path d="M288 205H622" stroke="#D9DEE5" stroke-width="2"/>
   </g>
   <g>
-    <rect x="126" y="116" width="86" height="86" rx="16" fill="#061912"/>
-    <path d="M151 174H187" stroke="#F8FAF7" stroke-width="7"/>
-    <path d="M151 158H196" stroke="#F8FAF7" stroke-width="7"/>
-    <path d="M151 142H178" stroke="#F8FAF7" stroke-width="7"/>
-    <path d="M187 174L202 158" stroke="#21A987" stroke-width="7"/>
-    <path d="M196 158L207 142" stroke="#21A987" stroke-width="7"/>
+    <rect x="1016" y="132" width="18" height="188" rx="4" fill="#D9DEE5"/>
+    <rect x="1048" y="168" width="18" height="152" rx="4" fill="#D9DEE5"/>
+    <rect x="1080" y="198" width="18" height="122" rx="4" fill="#D9DEE5"/>
+    <rect x="1112" y="110" width="18" height="210" rx="4" fill="#3AE68A"/>
+    <rect x="1144" y="142" width="18" height="178" rx="4" fill="#3AE68A"/>
+    <rect x="1176" y="184" width="18" height="136" rx="4" fill="#A1A5F8"/>
+    <rect x="1208" y="216" width="18" height="104" rx="4" fill="#F0CC8C"/>
+    <rect x="1240" y="236" width="18" height="84" rx="4" fill="#D860F4"/>
   </g>
-  <g opacity="0.76">
-    <path d="M268 160H736" stroke="#CBD7D0"/>
-    <path d="M268 184H816" stroke="#CBD7D0"/>
-    <path d="M268 208H666" stroke="#CBD7D0"/>
-    <path d="M268 232H926" stroke="#CBD7D0"/>
-  </g>
-  <g>
-    <path d="M992 144V344" stroke="#CBD7D0"/>
-    <path d="M1018 164V344" stroke="#CBD7D0"/>
-    <path d="M1044 188V344" stroke="#CBD7D0"/>
-    <path d="M1070 150V344" stroke="#21A987" stroke-width="3"/>
-    <path d="M1096 170V344" stroke="#21A987" stroke-width="3"/>
-    <path d="M1122 206V344" stroke="#21A987" stroke-width="3"/>
-    <path d="M1148 190V344" stroke="#CBD7D0"/>
-    <path d="M1174 218V344" stroke="#CBD7D0"/>
-    <path d="M1200 244V344" stroke="#CBD7D0"/>
-    <path d="M1226 260V344" stroke="#CBD7D0"/>
-    <path d="M1252 286V344" stroke="#CBD7D0"/>
-    <path d="M1278 304V344" stroke="#CBD7D0"/>
-  </g>
-  <text x="126" y="330" fill="#061912" font-family="Inter, Arial, sans-serif" font-size="52" font-weight="700">Realtime Voice Agent Kit</text>
-  <text x="126" y="376" fill="#53645C" font-family="Inter, Arial, sans-serif" font-size="24">WebRTC, telephony, realtime model APIs, STT/TTS pipelines, handoff, evals, and replay.</text>
+  <text x="126" y="330" fill="#111114" font-family="Inter, Arial, sans-serif" font-size="56" font-weight="700">Realtime Voice Agent Kit</text>
+  <text x="126" y="378" fill="#646974" font-family="Inter, Arial, sans-serif" font-size="25">WebRTC, telephony, realtime audio, handoff, evals, replay, and post-call workflows.</text>
 </svg>

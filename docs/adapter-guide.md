@@ -31,7 +31,7 @@ export class MyProviderAdapter implements SpeechModelAdapter {
 | --- | --- |
 | `fake` | Local normalized or legacy events |
 | `openai-realtime` | Realtime audio, transcript, interruption, and tool-call events |
-| `azure-openai-realtime` | Same normalized surface as OpenAI Realtime |
+| `azure-openai-realtime` | Same normalized surface as OpenAI Realtime, plus a server-side WebSocket audio helper |
 | `gemini-live` | Live API transcript, interruption, and output events |
 | `twilio-media-streams` | `start`, `media`, `mark`, and `stop` |
 | `livekit` | Transcript and handoff-style events |
@@ -47,3 +47,25 @@ export class MyProviderAdapter implements SpeechModelAdapter {
 3. Add a contract test that maps one real provider payload into a normalized event.
 4. Add an example directory with `.env.example` and README.
 5. Add a short row to the provider matrix in the root README.
+
+## Azure Realtime Audio Helper
+
+Use this helper when your server already has a PCM16 audio buffer and needs to send it to an Azure OpenAI Realtime deployment.
+
+```ts
+import { runAzureRealtimeAudioTurn } from "@inferensys/realtime-voice-adapters";
+
+const result = await runAzureRealtimeAudioTurn({
+  endpoint: process.env.AZURE_OPENAI_ENDPOINT!,
+  deployment: process.env.AZURE_OPENAI_REALTIME_DEPLOYMENT!,
+  apiKey: process.env.AZURE_OPENAI_API_KEY!,
+  inputPcm16,
+  instructions: "You are a practical support voice agent.",
+  responseInstructions: "Reply in one short sentence."
+});
+
+console.log(result.outputTranscript);
+console.log(result.outputAudioBytes);
+```
+
+The helper expects 24 kHz mono PCM16 by default. Convert WAV/MP3 input before sending it. The example script uses `ffmpeg` for that conversion.

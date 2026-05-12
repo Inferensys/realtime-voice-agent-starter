@@ -159,7 +159,7 @@ function toNormalizedEvent(
   return {
     event_id: event.event_id,
     call_id: event.call_id ?? session.callId,
-    provider: "fake",
+    provider: event.provider ?? "fake",
     type: normalizeLegacyEventType(event.type),
     timestamp: event.timestamp,
     sequence: event.sequence,

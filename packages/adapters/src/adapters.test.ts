@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { createProviderAdapter, knownProviders } from "./index";
+import { buildAzureRealtimeWebSocketUrl, createProviderAdapter, knownProviders } from "./index";
 
 describe("provider adapters", () => {
   it("registers the launch provider set", () => {
@@ -32,5 +32,30 @@ describe("provider adapters", () => {
     }, "call_openai");
     expect(events[0]?.type).toBe("tool.call");
     expect(events[0]?.payload.tool_name).toBe("lookup_order");
+    expect(events[0]?.payload.arguments).toEqual({ orderId: "A1" });
+  });
+
+  it("maps current realtime audio transcript and output events", () => {
+    const adapter = createProviderAdapter("azure-openai-realtime");
+    const transcriptEvents = adapter.normalizeProviderEvent({
+      type: "response.output_audio_transcript.done",
+      transcript: "I can help with that."
+    }, "call_azure");
+    const audioEvents = adapter.normalizeProviderEvent({
+      type: "response.output_audio.delta",
+      delta: "base64-audio"
+    }, "call_azure");
+
+    expect(transcriptEvents[0]?.type).toBe("transcript.final");
+    expect(transcriptEvents[0]?.payload.text).toBe("I can help with that.");
+    expect(audioEvents[0]?.type).toBe("audio.output");
+    expect(audioEvents[0]?.provider).toBe("azure-openai-realtime");
+  });
+
+  it("builds the Azure GA realtime WebSocket URL from a v1 endpoint", () => {
+    expect(buildAzureRealtimeWebSocketUrl({
+      endpoint: "https://example.services.ai.azure.com/openai/v1",
+      deployment: "gpt-realtime-1.5"
+    })).toBe("wss://example.services.ai.azure.com/openai/v1/realtime?model=gpt-realtime-1.5");
   });
 });

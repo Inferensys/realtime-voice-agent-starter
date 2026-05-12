@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-12T05:19:36.991Z",
+  "generated_at": "2026-05-12T07:00:21.389Z",
   "dataset": {
     "source": "PolyAI/minds14",
     "source_url": "https://huggingface.co/datasets/PolyAI/minds14",
@@ -11,7 +11,6 @@
         "id": "minds14_1",
         "row_idx": 0,
         "source_path": "en-US~JOINT_ACCOUNT/602ba55abb1e6d0fbce92065.wav",
-        "audio_url": "https://datasets-server.huggingface.co/cached-assets/PolyAI/minds14/--/40ce77cb32a384e4d50a568e1ec39ac804019d33/--/en-US/train/0/audio/audio.wav?Expires=1778566759&Signature=NfnavzjnAK3LhUvsEBYC-DHSMwfGkwzlaESlhqFwTv-mYXvrV41bL9yzUO3aVq3rLygbC-gCnQzEXNqptxLal8Ld4hwrMwDyHDMDvwp~yXWp3PDjpyrXof9B9~TYWBS~ZeSLf4PcgMAh0UYrFW-UHvFugxDh5Mk5EVB0aa7ecfRt54Lbc~9QCzdEaqm2jnOZX-TF1EAV-vDVJlXN52pmPIfa3FeYyvBfaa1AYuWy2V~ys-rgmPu9QAkca328Ot8zo7l1joulOrgX57NeZN3vTGrCTvZqsjV-nm~WjkCRhgB5TLjN2x3UNuDJWQ2mY9GwujH0B1Y9rNnZpA63ayojhg__&Key-Pair-Id=K204OQ5RWQVDLD",
         "audio_type": "audio/wav",
         "transcription": "I would like to set up a joint account with my partner",
         "intent_class": 11,
@@ -22,7 +21,6 @@
         "id": "minds14_2",
         "row_idx": 1,
         "source_path": "en-US~JOINT_ACCOUNT/602baf24bb1e6d0fbce922a7.wav",
-        "audio_url": "https://datasets-server.huggingface.co/cached-assets/PolyAI/minds14/--/40ce77cb32a384e4d50a568e1ec39ac804019d33/--/en-US/train/1/audio/audio.wav?Expires=1778566759&Signature=ogGb5qs-fZatIZuyKT7FY0NcOOdB6IyOQNYyEELJ3Qw6smdHJ8UN5DvONavlwSNw-GFA~e9DU6jCGFAqRvdGvegbF1dNhmgQE46waAV1cu0CpfMP-aDfgYi1e6s0p27UbcyM4lt5XIqt7vrPf6XaLmiUgxAMxVIfg-Vf5bWny9Y~xr~aTYKAUPuz25Bv0tiDdVr4gT~LlVyHumW8Nu0wMG1zBBm-5M0zKBZudQF8YOOtSbXzr1J0Ld3xFzQG1uki-RIxez5VT~t7UlIj3YCW0HSUi6eomZNACgtXvDl0kTncMNisEg30QbP9taTd6vW44NxaBOyzFm~ENxtdw2XuPg__&Key-Pair-Id=K204OQ5RWQVDLD",
         "audio_type": "audio/wav",
         "transcription": "Henry County set up a joint account with my wife and where are they at",
         "intent_class": 11,
@@ -33,7 +31,6 @@
         "id": "minds14_3",
         "row_idx": 2,
         "source_path": "en-US~JOINT_ACCOUNT/602b9f97963e11ccd901cc32.wav",
-        "audio_url": "https://datasets-server.huggingface.co/cached-assets/PolyAI/minds14/--/40ce77cb32a384e4d50a568e1ec39ac804019d33/--/en-US/train/2/audio/audio.wav?Expires=1778566759&Signature=0T~WhRDF87pl6BAecCQjE9tRCa1uJHXpqbGWycifSPZA-k~4b5q26Gck0pk~h0aXh1tpDPVdbUTIIaVXVOPHxiPSysSehenvZvt79IOvbMm3tTR6Vwo89B6EMvoSvJ~U0MV0xpqpK5TEooc34~Ykeu7nPllSEN44N762hk5G8Pt1qKM7-sJxe9~t~zshu8D~8f7UjV0F2lPYQ36-dp1571gfp9Ab-nLZ7efvdH~jj5zcvufYGs95-Q~pCWHePwTaWXJ7uDE8ZP7jSOXYdTVPMqvSyXdfoWsYzvj1G4aLlkkuE~z8B0Qsf9RbO0oxDn-~JS2WK1Wys9qKTcQ1MgiQAA__&Key-Pair-Id=K204OQ5RWQVDLD",
         "audio_type": "audio/wav",
         "transcription": "hi I'd like to set up a joint account with my partner I'm not seeing the option to do it on the app so I called in to get some help can I do it over the phone with you and give you the information",
         "intent_class": 11,
@@ -44,7 +41,6 @@
         "id": "minds14_4",
         "row_idx": 3,
         "source_path": "en-US~JOINT_ACCOUNT/602bacab5f67b421554f6488.wav",
-        "audio_url": "https://datasets-server.huggingface.co/cached-assets/PolyAI/minds14/--/40ce77cb32a384e4d50a568e1ec39ac804019d33/--/en-US/train/3/audio/audio.wav?Expires=1778566759&Signature=kxlOPMV0kRWb-3CJqRgrY46TUbsc6C7jzsh2W3cHazYjelHFgPSBD07SnuZ5PJVof6JYKMrnadYbvFQssPu-oYSYe3y5LLJofDWg03wwF5XQE0Jsm-cbA8sLm0V-Co0du9hFgN-dJySRZRf-1dCA6NLQhUGO6l2JntjS4sLS9qpTH-532FLQ5AaLq0fvHQBY3oVXj5Pye2zYxdcbFFkLtArJ-D-27oTGtcKOpJupxPVtvx5W3wP5peZMBvPqLrlAgF3sntZOfZfyKaXJP~urD6yehUVw1tT44aJagbv6Qn0FlDFiqkFz9B34b9t7Vq7scM8JtB9AWEKVngd5gIVYsQ__&Key-Pair-Id=K204OQ5RWQVDLD",
         "audio_type": "audio/wav",
         "transcription": "how do I start a joint account",
         "intent_class": 11,
@@ -54,120 +50,9 @@
     ]
   },
   "azure": {
-    "model_request": "gpt-5.5",
-    "model_response": "gpt-5.5-2026-04-24",
-    "usage": {
-      "completion_tokens": 675,
-      "completion_tokens_details": {
-        "accepted_prediction_tokens": 0,
-        "audio_tokens": 0,
-        "reasoning_tokens": 80,
-        "rejected_prediction_tokens": 0
-      },
-      "prompt_tokens": 369,
-      "prompt_tokens_details": {
-        "audio_tokens": 0,
-        "cached_tokens": 0
-      },
-      "total_tokens": 1044
-    },
-    "generated": {
-      "calls": [
-        {
-          "id": "minds14_1",
-          "intent_label": "Open a joint bank account with a partner",
-          "queue": "account_opening",
-          "needs_handoff": false,
-          "handoff_reason": "",
-          "tool_name": "get_joint_account_requirements",
-          "tool_arguments": {
-            "relationship": "partner",
-            "channel": "general"
-          },
-          "tool_result": {
-            "eligible_channels": [
-              "branch",
-              "secure_app"
-            ],
-            "required_items": [
-              "government ID for both applicants",
-              "personal details for both applicants",
-              "consent from both applicants"
-            ],
-            "phone_opening_available": false
-          },
-          "assistant_response": "You can start a joint account in the secure app or at a branch. Both applicants will need ID and must provide consent.",
-          "postcall_actions": [
-            "Send joint account requirements and secure app link"
-          ]
-        },
-        {
-          "id": "minds14_2",
-          "intent_label": "Open a joint bank account with spouse and find where to do it",
-          "queue": "account_opening",
-          "needs_handoff": false,
-          "handoff_reason": "",
-          "tool_name": "find_nearest_branch_service",
-          "tool_arguments": {
-            "service": "joint_account_opening",
-            "location_hint": "Henry County"
-          },
-          "tool_result": {
-            "service_available": true,
-            "recommendation": "Use the branch locator in the app or website to choose a nearby branch that supports account opening."
-          },
-          "assistant_response": "For a joint account with your wife, please use the branch locator to find a nearby account-opening branch in Henry County.",
-          "postcall_actions": [
-            "Send branch locator link for joint account opening"
-          ]
-        },
-        {
-          "id": "minds14_3",
-          "intent_label": "Request help opening a joint account by phone",
-          "queue": "account_opening_specialist",
-          "needs_handoff": true,
-          "handoff_reason": "Caller wants to provide applicant information by phone; a specialist should handle eligibility, disclosures, and identity steps.",
-          "tool_name": "create_handoff_ticket",
-          "tool_arguments": {
-            "reason": "joint_account_opening_phone_assistance",
-            "priority": "normal"
-          },
-          "tool_result": {
-            "ticket_created": true,
-            "next_queue": "account_opening_specialist",
-            "estimated_wait": "shortly"
-          },
-          "assistant_response": "I’ll connect you with an account-opening specialist who can explain the next steps and handle any required identity checks.",
-          "postcall_actions": [
-            "Transfer to account opening specialist"
-          ]
-        },
-        {
-          "id": "minds14_4",
-          "intent_label": "Ask how to start a joint bank account",
-          "queue": "account_opening",
-          "needs_handoff": false,
-          "handoff_reason": "",
-          "tool_name": "get_joint_account_start_steps",
-          "tool_arguments": {
-            "channel": "general"
-          },
-          "tool_result": {
-            "steps": [
-              "Choose the joint account type",
-              "Have both applicants ready with ID",
-              "Apply in the secure app or visit a branch",
-              "Review and accept disclosures together"
-            ]
-          },
-          "assistant_response": "To start, choose the account type, have both applicants’ IDs ready, then apply in the secure app or visit a branch.",
-          "postcall_actions": [
-            "Send joint account getting-started checklist"
-          ]
-        }
-      ],
-      "demo_summary": "All calls are about opening a joint account, with one routed to a human specialist for phone-assisted application handling."
-    }
+    "deployment": "gpt-realtime-1.5",
+    "model": "gpt-realtime-1.5-2026-02-23",
+    "endpoint_host": "chainscore-team-resource.services.ai.azure.com"
   },
   "replays": [
     {
@@ -176,174 +61,147 @@
         "id": "minds14_1",
         "row_idx": 0,
         "source_path": "en-US~JOINT_ACCOUNT/602ba55abb1e6d0fbce92065.wav",
-        "audio_url": "https://datasets-server.huggingface.co/cached-assets/PolyAI/minds14/--/40ce77cb32a384e4d50a568e1ec39ac804019d33/--/en-US/train/0/audio/audio.wav?Expires=1778566759&Signature=NfnavzjnAK3LhUvsEBYC-DHSMwfGkwzlaESlhqFwTv-mYXvrV41bL9yzUO3aVq3rLygbC-gCnQzEXNqptxLal8Ld4hwrMwDyHDMDvwp~yXWp3PDjpyrXof9B9~TYWBS~ZeSLf4PcgMAh0UYrFW-UHvFugxDh5Mk5EVB0aa7ecfRt54Lbc~9QCzdEaqm2jnOZX-TF1EAV-vDVJlXN52pmPIfa3FeYyvBfaa1AYuWy2V~ys-rgmPu9QAkca328Ot8zo7l1joulOrgX57NeZN3vTGrCTvZqsjV-nm~WjkCRhgB5TLjN2x3UNuDJWQ2mY9GwujH0B1Y9rNnZpA63ayojhg__&Key-Pair-Id=K204OQ5RWQVDLD",
         "audio_type": "audio/wav",
         "transcription": "I would like to set up a joint account with my partner",
         "intent_class": 11,
         "lang_id": 4,
         "local_audio": "docs/demo/dataset/audio/minds14_1.wav"
       },
-      "model_plan": {
-        "id": "minds14_1",
-        "intent_label": "Open a joint bank account with a partner",
-        "queue": "account_opening",
-        "needs_handoff": false,
-        "handoff_reason": "",
-        "tool_name": "get_joint_account_requirements",
-        "tool_arguments": {
-          "relationship": "partner",
-          "channel": "general"
+      "realtime": {
+        "endpoint_host": "chainscore-team-resource.services.ai.azure.com",
+        "deployment": "gpt-realtime-1.5",
+        "model": "gpt-realtime-1.5-2026-02-23",
+        "duration_ms": 4608,
+        "input_audio_bytes": 520194,
+        "output_audio_bytes": 362400,
+        "output_transcript": "To open a joint account, you'll usually both need to provide ID, visit your bank (online or in person), and sign the application together. [queue: account_opening]",
+        "raw_event_count": 71,
+        "raw_event_counts": {
+          "conversation.item.added": 2,
+          "conversation.item.done": 2,
+          "input_audio_buffer.committed": 1,
+          "response.content_part.added": 1,
+          "response.content_part.done": 1,
+          "response.created": 1,
+          "response.done": 1,
+          "response.output_audio.delta": 20,
+          "response.output_audio.done": 1,
+          "response.output_audio_transcript.delta": 36,
+          "response.output_audio_transcript.done": 1,
+          "response.output_item.added": 1,
+          "response.output_item.done": 1,
+          "session.created": 1,
+          "session.updated": 1
         },
-        "tool_result": {
-          "eligible_channels": [
-            "branch",
-            "secure_app"
-          ],
-          "required_items": [
-            "government ID for both applicants",
-            "personal details for both applicants",
-            "consent from both applicants"
-          ],
-          "phone_opening_available": false
-        },
-        "assistant_response": "You can start a joint account in the secure app or at a branch. Both applicants will need ID and must provide consent.",
-        "postcall_actions": [
-          "Send joint account requirements and secure app link"
-        ]
+        "response_audio_path": "docs/demo/output/responses/call_minds14_1.response.wav"
       },
       "replay": {
         "call_id": "call_minds14_1",
         "state": "closed",
         "events": [
           {
-            "event_id": "evt_call_minds14_1_0_1",
+            "event_id": "evt_call_minds14_1_audio_input_1778569221351_oyhddp",
+            "call_id": "call_minds14_1",
+            "provider": "azure-openai-realtime",
+            "type": "audio.input",
+            "timestamp": "2026-05-12T07:00:21.351Z",
+            "correlation_id": "corr_call_minds14_1",
+            "payload": {
+              "source_audio_path": "docs/demo/dataset/audio/minds14_1.wav",
+              "input_audio_bytes": 520194,
+              "format": {
+                "type": "audio/pcm",
+                "rate": 24000
+              },
+              "realtime_deployment": "gpt-realtime-1.5"
+            }
+          },
+          {
+            "event_id": "evt_call_minds14_1_transcript_final_1778569221351_tlobxo",
             "call_id": "call_minds14_1",
             "provider": "fake",
             "type": "transcript.final",
-            "timestamp": "2025-10-09T08:53:21.000Z",
-            "sequence": 1,
+            "timestamp": "2026-05-12T07:00:21.351Z",
             "correlation_id": "corr_call_minds14_1",
             "payload": {
               "speaker": "caller",
               "text": "I would like to set up a joint account with my partner",
-              "confidence": 0.96,
+              "confidence": 1,
               "is_final": true
             }
           },
           {
-            "event_id": "evt_call_minds14_1_0_2",
+            "event_id": "evt_call_minds14_1_latency_marker_1778569221351_u7rvrt",
             "call_id": "call_minds14_1",
-            "provider": "fake",
+            "provider": "azure-openai-realtime",
             "type": "latency.marker",
-            "timestamp": "2025-10-09T08:53:22.000Z",
-            "sequence": 2,
+            "timestamp": "2026-05-12T07:00:21.351Z",
             "correlation_id": "corr_call_minds14_1",
             "payload": {
               "name": "user-stop-to-agent-start",
-              "value_ms": 318,
-              "budget_ms": 900
+              "value_ms": 4608,
+              "budget_ms": 5000
             }
           },
           {
-            "event_id": "evt_call_minds14_1_0_3",
+            "event_id": "evt_call_minds14_1_audio_output_1778569221351_it300h",
             "call_id": "call_minds14_1",
-            "provider": "fake",
-            "type": "tool.call",
-            "timestamp": "2025-10-09T08:53:23.000Z",
-            "sequence": 3,
+            "provider": "azure-openai-realtime",
+            "type": "audio.output",
+            "timestamp": "2026-05-12T07:00:21.351Z",
             "correlation_id": "corr_call_minds14_1",
             "payload": {
-              "tool_call_id": "tool_minds14_1",
-              "tool_name": "get_joint_account_requirements",
-              "arguments": {
-                "relationship": "partner",
-                "channel": "general"
-              }
+              "response_audio_path": "docs/demo/output/responses/call_minds14_1.response.wav",
+              "output_audio_bytes": 362400,
+              "format": {
+                "type": "audio/pcm",
+                "rate": 24000
+              },
+              "realtime_model": "gpt-realtime-1.5-2026-02-23"
             }
           },
           {
-            "event_id": "evt_call_minds14_1_0_4",
+            "event_id": "evt_call_minds14_1_transcript_final_1778569221351_2s64ve",
             "call_id": "call_minds14_1",
-            "provider": "fake",
-            "type": "tool.result",
-            "timestamp": "2025-10-09T08:53:24.000Z",
-            "sequence": 4,
-            "correlation_id": "corr_call_minds14_1",
-            "payload": {
-              "tool_call_id": "tool_minds14_1",
-              "result": {
-                "eligible_channels": [
-                  "branch",
-                  "secure_app"
-                ],
-                "required_items": [
-                  "government ID for both applicants",
-                  "personal details for both applicants",
-                  "consent from both applicants"
-                ],
-                "phone_opening_available": false
-              }
-            }
-          },
-          {
-            "event_id": "evt_call_minds14_1_0_5",
-            "call_id": "call_minds14_1",
-            "provider": "fake",
+            "provider": "azure-openai-realtime",
             "type": "transcript.final",
-            "timestamp": "2025-10-09T08:53:25.000Z",
-            "sequence": 5,
+            "timestamp": "2026-05-12T07:00:21.351Z",
             "correlation_id": "corr_call_minds14_1",
             "payload": {
               "speaker": "assistant",
-              "text": "You can start a joint account in the secure app or at a branch. Both applicants will need ID and must provide consent.",
-              "confidence": 0.98,
+              "text": "To open a joint account, you'll usually both need to provide ID, visit your bank (online or in person), and sign the application together. [queue: account_opening]",
+              "confidence": 1,
               "is_final": true
             }
           },
           {
-            "event_id": "evt_call_minds14_1_0_6",
+            "event_id": "evt_call_minds14_1_call_closing_1778569221351_h5j31q",
             "call_id": "call_minds14_1",
-            "provider": "fake",
-            "type": "latency.marker",
-            "timestamp": "2025-10-09T08:53:26.000Z",
-            "sequence": 6,
-            "correlation_id": "corr_call_minds14_1",
-            "payload": {
-              "name": "first-audio",
-              "value_ms": 420,
-              "budget_ms": 900
-            }
-          },
-          {
-            "event_id": "evt_call_minds14_1_0_7",
-            "call_id": "call_minds14_1",
-            "provider": "fake",
+            "provider": "azure-openai-realtime",
             "type": "call.closing",
-            "timestamp": "2025-10-09T08:53:27.000Z",
-            "sequence": 7,
+            "timestamp": "2026-05-12T07:00:21.351Z",
             "correlation_id": "corr_call_minds14_1",
             "payload": {}
           },
           {
-            "event_id": "evt_call_minds14_1_0_8",
+            "event_id": "evt_call_minds14_1_call_closed_1778569221351_c66x5y",
             "call_id": "call_minds14_1",
-            "provider": "fake",
+            "provider": "azure-openai-realtime",
             "type": "call.closed",
-            "timestamp": "2025-10-09T08:53:28.000Z",
-            "sequence": 8,
+            "timestamp": "2026-05-12T07:00:21.351Z",
             "correlation_id": "corr_call_minds14_1",
             "payload": {}
           },
           {
-            "event_id": "evt_post_summary_1778563176970_m2mepxwn",
+            "event_id": "evt_post_summary_1778569221364_5gglqflw",
             "call_id": "call_minds14_1",
             "provider": "fake",
             "type": "postcall.ready",
-            "timestamp": "2026-05-12T05:19:36.970Z",
+            "timestamp": "2026-05-12T07:00:21.364Z",
             "correlation_id": "corr_call_minds14_1",
             "payload": {
               "summary_version": "v1",
-              "summary_text": "caller: I would like to set up a joint account with my partner | assistant: You can start a joint account in the secure app or at a branch. Both applicants will need ID and must provide consent.",
+              "summary_text": "caller: I would like to set up a joint account with my partner | assistant: To open a joint account, you'll usually both need to provide ID, visit your bank (online or in person), and sign the application together. [queue: account_opening]",
               "final_disposition": "auto_resolved",
               "action_items": [
                 "No handoff occurred; verify autonomous resolution and disposition tagging."
@@ -362,64 +220,35 @@
             "speaker": "caller",
             "text": "I would like to set up a joint account with my partner",
             "isFinal": true,
-            "timestamp": "2025-10-09T08:53:21.000Z",
-            "confidence": 0.96
+            "timestamp": "2026-05-12T07:00:21.351Z",
+            "confidence": 1
           },
           {
-            "sequence": 5,
+            "sequence": 2,
             "speaker": "assistant",
-            "text": "You can start a joint account in the secure app or at a branch. Both applicants will need ID and must provide consent.",
+            "text": "To open a joint account, you'll usually both need to provide ID, visit your bank (online or in person), and sign the application together. [queue: account_opening]",
             "isFinal": true,
-            "timestamp": "2025-10-09T08:53:25.000Z",
-            "confidence": 0.98
+            "timestamp": "2026-05-12T07:00:21.351Z",
+            "confidence": 1
           }
         ],
-        "tool_calls": [
-          {
-            "callId": "call_minds14_1",
-            "toolCallId": "tool_minds14_1",
-            "toolName": "get_joint_account_requirements",
-            "arguments": {
-              "relationship": "partner",
-              "channel": "general"
-            },
-            "status": "completed",
-            "timestamp": "2025-10-09T08:53:23.000Z",
-            "result": {
-              "eligible_channels": [
-                "branch",
-                "secure_app"
-              ],
-              "required_items": [
-                "government ID for both applicants",
-                "personal details for both applicants",
-                "consent from both applicants"
-              ],
-              "phone_opening_available": false
-            }
-          }
-        ],
+        "tool_calls": [],
         "latency_markers": [
           {
             "name": "user-stop-to-agent-start",
-            "value_ms": 318,
-            "budget_ms": 900
-          },
-          {
-            "name": "first-audio",
-            "value_ms": 420,
-            "budget_ms": 900
+            "value_ms": 4608,
+            "budget_ms": 5000
           }
         ],
         "post_summary": {
-          "event_id": "evt_post_summary_1778563176970_m2mepxwn",
+          "event_id": "evt_post_summary_1778569221364_5gglqflw",
           "event_type": "postcall.ready",
-          "occurred_at": "2026-05-12T05:19:36.970Z",
+          "occurred_at": "2026-05-12T07:00:21.364Z",
           "call_id": "call_minds14_1",
           "correlation_id": "corr_call_minds14_1",
           "payload": {
             "summary_version": "v1",
-            "summary_text": "caller: I would like to set up a joint account with my partner | assistant: You can start a joint account in the secure app or at a branch. Both applicants will need ID and must provide consent.",
+            "summary_text": "caller: I would like to set up a joint account with my partner | assistant: To open a joint account, you'll usually both need to provide ID, visit your bank (online or in person), and sign the application together. [queue: account_opening]",
             "final_disposition": "auto_resolved",
             "action_items": [
               "No handoff occurred; verify autonomous resolution and disposition tagging."
@@ -439,158 +268,147 @@
         "id": "minds14_2",
         "row_idx": 1,
         "source_path": "en-US~JOINT_ACCOUNT/602baf24bb1e6d0fbce922a7.wav",
-        "audio_url": "https://datasets-server.huggingface.co/cached-assets/PolyAI/minds14/--/40ce77cb32a384e4d50a568e1ec39ac804019d33/--/en-US/train/1/audio/audio.wav?Expires=1778566759&Signature=ogGb5qs-fZatIZuyKT7FY0NcOOdB6IyOQNYyEELJ3Qw6smdHJ8UN5DvONavlwSNw-GFA~e9DU6jCGFAqRvdGvegbF1dNhmgQE46waAV1cu0CpfMP-aDfgYi1e6s0p27UbcyM4lt5XIqt7vrPf6XaLmiUgxAMxVIfg-Vf5bWny9Y~xr~aTYKAUPuz25Bv0tiDdVr4gT~LlVyHumW8Nu0wMG1zBBm-5M0zKBZudQF8YOOtSbXzr1J0Ld3xFzQG1uki-RIxez5VT~t7UlIj3YCW0HSUi6eomZNACgtXvDl0kTncMNisEg30QbP9taTd6vW44NxaBOyzFm~ENxtdw2XuPg__&Key-Pair-Id=K204OQ5RWQVDLD",
         "audio_type": "audio/wav",
         "transcription": "Henry County set up a joint account with my wife and where are they at",
         "intent_class": 11,
         "lang_id": 4,
         "local_audio": "docs/demo/dataset/audio/minds14_2.wav"
       },
-      "model_plan": {
-        "id": "minds14_2",
-        "intent_label": "Open a joint bank account with spouse and find where to do it",
-        "queue": "account_opening",
-        "needs_handoff": false,
-        "handoff_reason": "",
-        "tool_name": "find_nearest_branch_service",
-        "tool_arguments": {
-          "service": "joint_account_opening",
-          "location_hint": "Henry County"
+      "realtime": {
+        "endpoint_host": "chainscore-team-resource.services.ai.azure.com",
+        "deployment": "gpt-realtime-1.5",
+        "model": "gpt-realtime-1.5-2026-02-23",
+        "duration_ms": 4624,
+        "input_audio_bytes": 319488,
+        "output_audio_bytes": 460800,
+        "output_transcript": "To open a joint account with your wife, you'll usually start in your bank’s mobile app or website under \"Open Account\" and select \"Joint\"; if you need help, a banker can guide you. [queue: account_opening]",
+        "raw_event_count": 88,
+        "raw_event_counts": {
+          "conversation.item.added": 2,
+          "conversation.item.done": 2,
+          "input_audio_buffer.committed": 1,
+          "response.content_part.added": 1,
+          "response.content_part.done": 1,
+          "response.created": 1,
+          "response.done": 1,
+          "response.output_audio.delta": 25,
+          "response.output_audio.done": 1,
+          "response.output_audio_transcript.delta": 48,
+          "response.output_audio_transcript.done": 1,
+          "response.output_item.added": 1,
+          "response.output_item.done": 1,
+          "session.created": 1,
+          "session.updated": 1
         },
-        "tool_result": {
-          "service_available": true,
-          "recommendation": "Use the branch locator in the app or website to choose a nearby branch that supports account opening."
-        },
-        "assistant_response": "For a joint account with your wife, please use the branch locator to find a nearby account-opening branch in Henry County.",
-        "postcall_actions": [
-          "Send branch locator link for joint account opening"
-        ]
+        "response_audio_path": "docs/demo/output/responses/call_minds14_2.response.wav"
       },
       "replay": {
         "call_id": "call_minds14_2",
         "state": "closed",
         "events": [
           {
-            "event_id": "evt_call_minds14_2_1_1",
+            "event_id": "evt_call_minds14_2_audio_input_1778569221366_r1keh6",
+            "call_id": "call_minds14_2",
+            "provider": "azure-openai-realtime",
+            "type": "audio.input",
+            "timestamp": "2026-05-12T07:00:21.366Z",
+            "correlation_id": "corr_call_minds14_2",
+            "payload": {
+              "source_audio_path": "docs/demo/dataset/audio/minds14_2.wav",
+              "input_audio_bytes": 319488,
+              "format": {
+                "type": "audio/pcm",
+                "rate": 24000
+              },
+              "realtime_deployment": "gpt-realtime-1.5"
+            }
+          },
+          {
+            "event_id": "evt_call_minds14_2_transcript_final_1778569221366_h09ir0",
             "call_id": "call_minds14_2",
             "provider": "fake",
             "type": "transcript.final",
-            "timestamp": "2025-10-09T08:54:21.000Z",
-            "sequence": 1,
+            "timestamp": "2026-05-12T07:00:21.366Z",
             "correlation_id": "corr_call_minds14_2",
             "payload": {
               "speaker": "caller",
               "text": "Henry County set up a joint account with my wife and where are they at",
-              "confidence": 0.96,
+              "confidence": 1,
               "is_final": true
             }
           },
           {
-            "event_id": "evt_call_minds14_2_1_2",
+            "event_id": "evt_call_minds14_2_latency_marker_1778569221366_a00f1e",
             "call_id": "call_minds14_2",
-            "provider": "fake",
+            "provider": "azure-openai-realtime",
             "type": "latency.marker",
-            "timestamp": "2025-10-09T08:54:22.000Z",
-            "sequence": 2,
+            "timestamp": "2026-05-12T07:00:21.366Z",
             "correlation_id": "corr_call_minds14_2",
             "payload": {
               "name": "user-stop-to-agent-start",
-              "value_ms": 349,
-              "budget_ms": 900
+              "value_ms": 4624,
+              "budget_ms": 5000
             }
           },
           {
-            "event_id": "evt_call_minds14_2_1_3",
+            "event_id": "evt_call_minds14_2_audio_output_1778569221366_f0t2s3",
             "call_id": "call_minds14_2",
-            "provider": "fake",
-            "type": "tool.call",
-            "timestamp": "2025-10-09T08:54:23.000Z",
-            "sequence": 3,
+            "provider": "azure-openai-realtime",
+            "type": "audio.output",
+            "timestamp": "2026-05-12T07:00:21.366Z",
             "correlation_id": "corr_call_minds14_2",
             "payload": {
-              "tool_call_id": "tool_minds14_2",
-              "tool_name": "find_nearest_branch_service",
-              "arguments": {
-                "service": "joint_account_opening",
-                "location_hint": "Henry County"
-              }
+              "response_audio_path": "docs/demo/output/responses/call_minds14_2.response.wav",
+              "output_audio_bytes": 460800,
+              "format": {
+                "type": "audio/pcm",
+                "rate": 24000
+              },
+              "realtime_model": "gpt-realtime-1.5-2026-02-23"
             }
           },
           {
-            "event_id": "evt_call_minds14_2_1_4",
+            "event_id": "evt_call_minds14_2_transcript_final_1778569221366_mwz8en",
             "call_id": "call_minds14_2",
-            "provider": "fake",
-            "type": "tool.result",
-            "timestamp": "2025-10-09T08:54:24.000Z",
-            "sequence": 4,
-            "correlation_id": "corr_call_minds14_2",
-            "payload": {
-              "tool_call_id": "tool_minds14_2",
-              "result": {
-                "service_available": true,
-                "recommendation": "Use the branch locator in the app or website to choose a nearby branch that supports account opening."
-              }
-            }
-          },
-          {
-            "event_id": "evt_call_minds14_2_1_5",
-            "call_id": "call_minds14_2",
-            "provider": "fake",
+            "provider": "azure-openai-realtime",
             "type": "transcript.final",
-            "timestamp": "2025-10-09T08:54:25.000Z",
-            "sequence": 5,
+            "timestamp": "2026-05-12T07:00:21.366Z",
             "correlation_id": "corr_call_minds14_2",
             "payload": {
               "speaker": "assistant",
-              "text": "For a joint account with your wife, please use the branch locator to find a nearby account-opening branch in Henry County.",
-              "confidence": 0.98,
+              "text": "To open a joint account with your wife, you'll usually start in your bank’s mobile app or website under \"Open Account\" and select \"Joint\"; if you need help, a banker can guide you. [queue: account_opening]",
+              "confidence": 1,
               "is_final": true
             }
           },
           {
-            "event_id": "evt_call_minds14_2_1_6",
+            "event_id": "evt_call_minds14_2_call_closing_1778569221366_1yb2q3",
             "call_id": "call_minds14_2",
-            "provider": "fake",
-            "type": "latency.marker",
-            "timestamp": "2025-10-09T08:54:26.000Z",
-            "sequence": 6,
-            "correlation_id": "corr_call_minds14_2",
-            "payload": {
-              "name": "first-audio",
-              "value_ms": 447,
-              "budget_ms": 900
-            }
-          },
-          {
-            "event_id": "evt_call_minds14_2_1_7",
-            "call_id": "call_minds14_2",
-            "provider": "fake",
+            "provider": "azure-openai-realtime",
             "type": "call.closing",
-            "timestamp": "2025-10-09T08:54:27.000Z",
-            "sequence": 7,
+            "timestamp": "2026-05-12T07:00:21.366Z",
             "correlation_id": "corr_call_minds14_2",
             "payload": {}
           },
           {
-            "event_id": "evt_call_minds14_2_1_8",
+            "event_id": "evt_call_minds14_2_call_closed_1778569221366_7lpy83",
             "call_id": "call_minds14_2",
-            "provider": "fake",
+            "provider": "azure-openai-realtime",
             "type": "call.closed",
-            "timestamp": "2025-10-09T08:54:28.000Z",
-            "sequence": 8,
+            "timestamp": "2026-05-12T07:00:21.366Z",
             "correlation_id": "corr_call_minds14_2",
             "payload": {}
           },
           {
-            "event_id": "evt_post_summary_1778563176977_b0p888fc",
+            "event_id": "evt_post_summary_1778569221371_e7nk0r5l",
             "call_id": "call_minds14_2",
             "provider": "fake",
             "type": "postcall.ready",
-            "timestamp": "2026-05-12T05:19:36.977Z",
+            "timestamp": "2026-05-12T07:00:21.371Z",
             "correlation_id": "corr_call_minds14_2",
             "payload": {
               "summary_version": "v1",
-              "summary_text": "caller: Henry County set up a joint account with my wife and where are they at | assistant: For a joint account with your wife, please use the branch locator to find a nearby account-opening branch in Henry County.",
+              "summary_text": "caller: Henry County set up a joint account with my wife and where are they at | assistant: To open a joint account with your wife, you'll usually start in your bank’s mobile app or website under \"Open Account\" and select \"Joint\"; if you need help, a banker can guide you. [queue: account_opening]",
               "final_disposition": "auto_resolved",
               "action_items": [
                 "No handoff occurred; verify autonomous resolution and disposition tagging."
@@ -609,56 +427,35 @@
             "speaker": "caller",
             "text": "Henry County set up a joint account with my wife and where are they at",
             "isFinal": true,
-            "timestamp": "2025-10-09T08:54:21.000Z",
-            "confidence": 0.96
+            "timestamp": "2026-05-12T07:00:21.366Z",
+            "confidence": 1
           },
           {
-            "sequence": 5,
+            "sequence": 2,
             "speaker": "assistant",
-            "text": "For a joint account with your wife, please use the branch locator to find a nearby account-opening branch in Henry County.",
+            "text": "To open a joint account with your wife, you'll usually start in your bank’s mobile app or website under \"Open Account\" and select \"Joint\"; if you need help, a banker can guide you. [queue: account_opening]",
             "isFinal": true,
-            "timestamp": "2025-10-09T08:54:25.000Z",
-            "confidence": 0.98
+            "timestamp": "2026-05-12T07:00:21.366Z",
+            "confidence": 1
           }
         ],
-        "tool_calls": [
-          {
-            "callId": "call_minds14_2",
-            "toolCallId": "tool_minds14_2",
-            "toolName": "find_nearest_branch_service",
-            "arguments": {
-              "service": "joint_account_opening",
-              "location_hint": "Henry County"
-            },
-            "status": "completed",
-            "timestamp": "2025-10-09T08:54:23.000Z",
-            "result": {
-              "service_available": true,
-              "recommendation": "Use the branch locator in the app or website to choose a nearby branch that supports account opening."
-            }
-          }
-        ],
+        "tool_calls": [],
         "latency_markers": [
           {
             "name": "user-stop-to-agent-start",
-            "value_ms": 349,
-            "budget_ms": 900
-          },
-          {
-            "name": "first-audio",
-            "value_ms": 447,
-            "budget_ms": 900
+            "value_ms": 4624,
+            "budget_ms": 5000
           }
         ],
         "post_summary": {
-          "event_id": "evt_post_summary_1778563176977_b0p888fc",
+          "event_id": "evt_post_summary_1778569221371_e7nk0r5l",
           "event_type": "postcall.ready",
-          "occurred_at": "2026-05-12T05:19:36.977Z",
+          "occurred_at": "2026-05-12T07:00:21.371Z",
           "call_id": "call_minds14_2",
           "correlation_id": "corr_call_minds14_2",
           "payload": {
             "summary_version": "v1",
-            "summary_text": "caller: Henry County set up a joint account with my wife and where are they at | assistant: For a joint account with your wife, please use the branch locator to find a nearby account-opening branch in Henry County.",
+            "summary_text": "caller: Henry County set up a joint account with my wife and where are they at | assistant: To open a joint account with your wife, you'll usually start in your bank’s mobile app or website under \"Open Account\" and select \"Joint\"; if you need help, a banker can guide you. [queue: account_opening]",
             "final_disposition": "auto_resolved",
             "action_items": [
               "No handoff occurred; verify autonomous resolution and disposition tagging."
@@ -678,191 +475,150 @@
         "id": "minds14_3",
         "row_idx": 2,
         "source_path": "en-US~JOINT_ACCOUNT/602b9f97963e11ccd901cc32.wav",
-        "audio_url": "https://datasets-server.huggingface.co/cached-assets/PolyAI/minds14/--/40ce77cb32a384e4d50a568e1ec39ac804019d33/--/en-US/train/2/audio/audio.wav?Expires=1778566759&Signature=0T~WhRDF87pl6BAecCQjE9tRCa1uJHXpqbGWycifSPZA-k~4b5q26Gck0pk~h0aXh1tpDPVdbUTIIaVXVOPHxiPSysSehenvZvt79IOvbMm3tTR6Vwo89B6EMvoSvJ~U0MV0xpqpK5TEooc34~Ykeu7nPllSEN44N762hk5G8Pt1qKM7-sJxe9~t~zshu8D~8f7UjV0F2lPYQ36-dp1571gfp9Ab-nLZ7efvdH~jj5zcvufYGs95-Q~pCWHePwTaWXJ7uDE8ZP7jSOXYdTVPMqvSyXdfoWsYzvj1G4aLlkkuE~z8B0Qsf9RbO0oxDn-~JS2WK1Wys9qKTcQ1MgiQAA__&Key-Pair-Id=K204OQ5RWQVDLD",
         "audio_type": "audio/wav",
         "transcription": "hi I'd like to set up a joint account with my partner I'm not seeing the option to do it on the app so I called in to get some help can I do it over the phone with you and give you the information",
         "intent_class": 11,
         "lang_id": 4,
         "local_audio": "docs/demo/dataset/audio/minds14_3.wav"
       },
-      "model_plan": {
-        "id": "minds14_3",
-        "intent_label": "Request help opening a joint account by phone",
-        "queue": "account_opening_specialist",
-        "needs_handoff": true,
-        "handoff_reason": "Caller wants to provide applicant information by phone; a specialist should handle eligibility, disclosures, and identity steps.",
-        "tool_name": "create_handoff_ticket",
-        "tool_arguments": {
-          "reason": "joint_account_opening_phone_assistance",
-          "priority": "normal"
+      "realtime": {
+        "endpoint_host": "chainscore-team-resource.services.ai.azure.com",
+        "deployment": "gpt-realtime-1.5",
+        "model": "gpt-realtime-1.5-2026-02-23",
+        "duration_ms": 4994,
+        "input_audio_bytes": 1163262,
+        "output_audio_bytes": 403200,
+        "output_transcript": "I can guide you through the process, but you’ll need to speak with our account-opening team to securely provide details over the phone. [queue: account_opening]",
+        "raw_event_count": 71,
+        "raw_event_counts": {
+          "conversation.item.added": 2,
+          "conversation.item.done": 2,
+          "input_audio_buffer.committed": 1,
+          "response.content_part.added": 1,
+          "response.content_part.done": 1,
+          "response.created": 1,
+          "response.done": 1,
+          "response.output_audio.delta": 22,
+          "response.output_audio.done": 1,
+          "response.output_audio_transcript.delta": 34,
+          "response.output_audio_transcript.done": 1,
+          "response.output_item.added": 1,
+          "response.output_item.done": 1,
+          "session.created": 1,
+          "session.updated": 1
         },
-        "tool_result": {
-          "ticket_created": true,
-          "next_queue": "account_opening_specialist",
-          "estimated_wait": "shortly"
-        },
-        "assistant_response": "I’ll connect you with an account-opening specialist who can explain the next steps and handle any required identity checks.",
-        "postcall_actions": [
-          "Transfer to account opening specialist"
-        ]
+        "response_audio_path": "docs/demo/output/responses/call_minds14_3.response.wav"
       },
       "replay": {
         "call_id": "call_minds14_3",
         "state": "closed",
         "events": [
           {
-            "event_id": "evt_call_minds14_3_2_1",
+            "event_id": "evt_call_minds14_3_audio_input_1778569221374_z2tbfy",
+            "call_id": "call_minds14_3",
+            "provider": "azure-openai-realtime",
+            "type": "audio.input",
+            "timestamp": "2026-05-12T07:00:21.374Z",
+            "correlation_id": "corr_call_minds14_3",
+            "payload": {
+              "source_audio_path": "docs/demo/dataset/audio/minds14_3.wav",
+              "input_audio_bytes": 1163262,
+              "format": {
+                "type": "audio/pcm",
+                "rate": 24000
+              },
+              "realtime_deployment": "gpt-realtime-1.5"
+            }
+          },
+          {
+            "event_id": "evt_call_minds14_3_transcript_final_1778569221374_zsw4g6",
             "call_id": "call_minds14_3",
             "provider": "fake",
             "type": "transcript.final",
-            "timestamp": "2025-10-09T08:55:21.000Z",
-            "sequence": 1,
+            "timestamp": "2026-05-12T07:00:21.374Z",
             "correlation_id": "corr_call_minds14_3",
             "payload": {
               "speaker": "caller",
               "text": "hi I'd like to set up a joint account with my partner I'm not seeing the option to do it on the app so I called in to get some help can I do it over the phone with you and give you the information",
-              "confidence": 0.96,
+              "confidence": 1,
               "is_final": true
             }
           },
           {
-            "event_id": "evt_call_minds14_3_2_2",
+            "event_id": "evt_call_minds14_3_latency_marker_1778569221374_4mmjlc",
             "call_id": "call_minds14_3",
-            "provider": "fake",
+            "provider": "azure-openai-realtime",
             "type": "latency.marker",
-            "timestamp": "2025-10-09T08:55:22.000Z",
-            "sequence": 2,
+            "timestamp": "2026-05-12T07:00:21.374Z",
             "correlation_id": "corr_call_minds14_3",
             "payload": {
               "name": "user-stop-to-agent-start",
-              "value_ms": 380,
-              "budget_ms": 900
+              "value_ms": 4994,
+              "budget_ms": 5000
             }
           },
           {
-            "event_id": "evt_call_minds14_3_2_3",
+            "event_id": "evt_call_minds14_3_audio_output_1778569221374_dp719m",
             "call_id": "call_minds14_3",
-            "provider": "fake",
-            "type": "tool.call",
-            "timestamp": "2025-10-09T08:55:23.000Z",
-            "sequence": 3,
+            "provider": "azure-openai-realtime",
+            "type": "audio.output",
+            "timestamp": "2026-05-12T07:00:21.374Z",
             "correlation_id": "corr_call_minds14_3",
             "payload": {
-              "tool_call_id": "tool_minds14_3",
-              "tool_name": "create_handoff_ticket",
-              "arguments": {
-                "reason": "joint_account_opening_phone_assistance",
-                "priority": "normal"
-              }
+              "response_audio_path": "docs/demo/output/responses/call_minds14_3.response.wav",
+              "output_audio_bytes": 403200,
+              "format": {
+                "type": "audio/pcm",
+                "rate": 24000
+              },
+              "realtime_model": "gpt-realtime-1.5-2026-02-23"
             }
           },
           {
-            "event_id": "evt_call_minds14_3_2_4",
+            "event_id": "evt_call_minds14_3_transcript_final_1778569221374_6qjq0w",
             "call_id": "call_minds14_3",
-            "provider": "fake",
-            "type": "tool.result",
-            "timestamp": "2025-10-09T08:55:24.000Z",
-            "sequence": 4,
-            "correlation_id": "corr_call_minds14_3",
-            "payload": {
-              "tool_call_id": "tool_minds14_3",
-              "result": {
-                "ticket_created": true,
-                "next_queue": "account_opening_specialist",
-                "estimated_wait": "shortly"
-              }
-            }
-          },
-          {
-            "event_id": "evt_call_minds14_3_2_5",
-            "call_id": "call_minds14_3",
-            "provider": "fake",
+            "provider": "azure-openai-realtime",
             "type": "transcript.final",
-            "timestamp": "2025-10-09T08:55:25.000Z",
-            "sequence": 5,
+            "timestamp": "2026-05-12T07:00:21.374Z",
             "correlation_id": "corr_call_minds14_3",
             "payload": {
               "speaker": "assistant",
-              "text": "I’ll connect you with an account-opening specialist who can explain the next steps and handle any required identity checks.",
-              "confidence": 0.98,
+              "text": "I can guide you through the process, but you’ll need to speak with our account-opening team to securely provide details over the phone. [queue: account_opening]",
+              "confidence": 1,
               "is_final": true
             }
           },
           {
-            "event_id": "evt_call_minds14_3_2_6",
+            "event_id": "evt_call_minds14_3_call_closing_1778569221374_p57bcw",
             "call_id": "call_minds14_3",
-            "provider": "fake",
-            "type": "latency.marker",
-            "timestamp": "2025-10-09T08:55:26.000Z",
-            "sequence": 6,
-            "correlation_id": "corr_call_minds14_3",
-            "payload": {
-              "name": "first-audio",
-              "value_ms": 474,
-              "budget_ms": 900
-            }
-          },
-          {
-            "event_id": "evt_call_minds14_3_handoff_requested",
-            "call_id": "call_minds14_3",
-            "provider": "fake",
-            "type": "handoff.requested",
-            "timestamp": "2025-10-09T08:55:27.000Z",
-            "correlation_id": "corr_call_minds14_3",
-            "payload": {
-              "requested_by": "assistant_runtime",
-              "reason_code": "Caller wants to provide applicant information by phone; a specialist should handle eligibility, disclosures, and identity steps.",
-              "target_queue": "human-specialist",
-              "last_transcript_seq": 6,
-              "context_snapshot_uri": "memory://call_minds14_3/context"
-            }
-          },
-          {
-            "event_id": "evt_call_minds14_3_2_7",
-            "call_id": "call_minds14_3",
-            "provider": "fake",
-            "type": "handoff.accepted",
-            "timestamp": "2025-10-09T08:55:27.000Z",
-            "sequence": 7,
-            "correlation_id": "corr_call_minds14_3",
-            "payload": {
-              "agent_id": "human_specialist_1",
-              "accept_time": "2025-10-09T08:55:28.000Z"
-            }
-          },
-          {
-            "event_id": "evt_call_minds14_3_2_8",
-            "call_id": "call_minds14_3",
-            "provider": "fake",
+            "provider": "azure-openai-realtime",
             "type": "call.closing",
-            "timestamp": "2025-10-09T08:55:28.000Z",
-            "sequence": 8,
+            "timestamp": "2026-05-12T07:00:21.374Z",
             "correlation_id": "corr_call_minds14_3",
             "payload": {}
           },
           {
-            "event_id": "evt_call_minds14_3_2_9",
+            "event_id": "evt_call_minds14_3_call_closed_1778569221374_pssmog",
             "call_id": "call_minds14_3",
-            "provider": "fake",
+            "provider": "azure-openai-realtime",
             "type": "call.closed",
-            "timestamp": "2025-10-09T08:55:29.000Z",
-            "sequence": 9,
+            "timestamp": "2026-05-12T07:00:21.374Z",
             "correlation_id": "corr_call_minds14_3",
             "payload": {}
           },
           {
-            "event_id": "evt_post_summary_1778563176984_ubhufqdv",
+            "event_id": "evt_post_summary_1778569221379_hn440heq",
             "call_id": "call_minds14_3",
             "provider": "fake",
             "type": "postcall.ready",
-            "timestamp": "2026-05-12T05:19:36.984Z",
+            "timestamp": "2026-05-12T07:00:21.379Z",
             "correlation_id": "corr_call_minds14_3",
             "payload": {
               "summary_version": "v1",
-              "summary_text": "caller: hi I'd like to set up a joint account with my partner I'm not seeing the option to do it on the app so I called in to get some help can I do it over the phone with you and give you the information | assistant: I’ll connect you with an account-opening specialist who can explain the next steps and handle any required identity checks.",
-              "final_disposition": "handed_off_completed",
+              "summary_text": "caller: hi I'd like to set up a joint account with my partner I'm not seeing the option to do it on the app so I called in to get some help can I do it over the phone with you and give you the information | assistant: I can guide you through the process, but you’ll need to speak with our account-opening team to securely provide details over the phone. [queue: account_opening]",
+              "final_disposition": "auto_resolved",
               "action_items": [
-                "Assigned human agent should close follow-up actions in downstream CRM."
+                "No handoff occurred; verify autonomous resolution and disposition tagging."
               ],
               "integration_targets": [
                 "crm",
@@ -878,60 +634,38 @@
             "speaker": "caller",
             "text": "hi I'd like to set up a joint account with my partner I'm not seeing the option to do it on the app so I called in to get some help can I do it over the phone with you and give you the information",
             "isFinal": true,
-            "timestamp": "2025-10-09T08:55:21.000Z",
-            "confidence": 0.96
+            "timestamp": "2026-05-12T07:00:21.374Z",
+            "confidence": 1
           },
           {
-            "sequence": 5,
+            "sequence": 2,
             "speaker": "assistant",
-            "text": "I’ll connect you with an account-opening specialist who can explain the next steps and handle any required identity checks.",
+            "text": "I can guide you through the process, but you’ll need to speak with our account-opening team to securely provide details over the phone. [queue: account_opening]",
             "isFinal": true,
-            "timestamp": "2025-10-09T08:55:25.000Z",
-            "confidence": 0.98
+            "timestamp": "2026-05-12T07:00:21.374Z",
+            "confidence": 1
           }
         ],
-        "tool_calls": [
-          {
-            "callId": "call_minds14_3",
-            "toolCallId": "tool_minds14_3",
-            "toolName": "create_handoff_ticket",
-            "arguments": {
-              "reason": "joint_account_opening_phone_assistance",
-              "priority": "normal"
-            },
-            "status": "completed",
-            "timestamp": "2025-10-09T08:55:23.000Z",
-            "result": {
-              "ticket_created": true,
-              "next_queue": "account_opening_specialist",
-              "estimated_wait": "shortly"
-            }
-          }
-        ],
+        "tool_calls": [],
         "latency_markers": [
           {
             "name": "user-stop-to-agent-start",
-            "value_ms": 380,
-            "budget_ms": 900
-          },
-          {
-            "name": "first-audio",
-            "value_ms": 474,
-            "budget_ms": 900
+            "value_ms": 4994,
+            "budget_ms": 5000
           }
         ],
         "post_summary": {
-          "event_id": "evt_post_summary_1778563176984_ubhufqdv",
+          "event_id": "evt_post_summary_1778569221379_hn440heq",
           "event_type": "postcall.ready",
-          "occurred_at": "2026-05-12T05:19:36.984Z",
+          "occurred_at": "2026-05-12T07:00:21.379Z",
           "call_id": "call_minds14_3",
           "correlation_id": "corr_call_minds14_3",
           "payload": {
             "summary_version": "v1",
-            "summary_text": "caller: hi I'd like to set up a joint account with my partner I'm not seeing the option to do it on the app so I called in to get some help can I do it over the phone with you and give you the information | assistant: I’ll connect you with an account-opening specialist who can explain the next steps and handle any required identity checks.",
-            "final_disposition": "handed_off_completed",
+            "summary_text": "caller: hi I'd like to set up a joint account with my partner I'm not seeing the option to do it on the app so I called in to get some help can I do it over the phone with you and give you the information | assistant: I can guide you through the process, but you’ll need to speak with our account-opening team to securely provide details over the phone. [queue: account_opening]",
+            "final_disposition": "auto_resolved",
             "action_items": [
-              "Assigned human agent should close follow-up actions in downstream CRM."
+              "No handoff occurred; verify autonomous resolution and disposition tagging."
             ],
             "integration_targets": [
               "crm",
@@ -948,164 +682,147 @@
         "id": "minds14_4",
         "row_idx": 3,
         "source_path": "en-US~JOINT_ACCOUNT/602bacab5f67b421554f6488.wav",
-        "audio_url": "https://datasets-server.huggingface.co/cached-assets/PolyAI/minds14/--/40ce77cb32a384e4d50a568e1ec39ac804019d33/--/en-US/train/3/audio/audio.wav?Expires=1778566759&Signature=kxlOPMV0kRWb-3CJqRgrY46TUbsc6C7jzsh2W3cHazYjelHFgPSBD07SnuZ5PJVof6JYKMrnadYbvFQssPu-oYSYe3y5LLJofDWg03wwF5XQE0Jsm-cbA8sLm0V-Co0du9hFgN-dJySRZRf-1dCA6NLQhUGO6l2JntjS4sLS9qpTH-532FLQ5AaLq0fvHQBY3oVXj5Pye2zYxdcbFFkLtArJ-D-27oTGtcKOpJupxPVtvx5W3wP5peZMBvPqLrlAgF3sntZOfZfyKaXJP~urD6yehUVw1tT44aJagbv6Qn0FlDFiqkFz9B34b9t7Vq7scM8JtB9AWEKVngd5gIVYsQ__&Key-Pair-Id=K204OQ5RWQVDLD",
         "audio_type": "audio/wav",
         "transcription": "how do I start a joint account",
         "intent_class": 11,
         "lang_id": 4,
         "local_audio": "docs/demo/dataset/audio/minds14_4.wav"
       },
-      "model_plan": {
-        "id": "minds14_4",
-        "intent_label": "Ask how to start a joint bank account",
-        "queue": "account_opening",
-        "needs_handoff": false,
-        "handoff_reason": "",
-        "tool_name": "get_joint_account_start_steps",
-        "tool_arguments": {
-          "channel": "general"
+      "realtime": {
+        "endpoint_host": "chainscore-team-resource.services.ai.azure.com",
+        "deployment": "gpt-realtime-1.5",
+        "model": "gpt-realtime-1.5-2026-02-23",
+        "duration_ms": 4072,
+        "input_audio_bytes": 155646,
+        "output_audio_bytes": 357600,
+        "output_transcript": "To start a joint account, you’ll both need to provide identification and personal details at your bank or via an online application form. [queue: account_opening]",
+        "raw_event_count": 68,
+        "raw_event_counts": {
+          "conversation.item.added": 2,
+          "conversation.item.done": 2,
+          "input_audio_buffer.committed": 1,
+          "response.content_part.added": 1,
+          "response.content_part.done": 1,
+          "response.created": 1,
+          "response.done": 1,
+          "response.output_audio.delta": 20,
+          "response.output_audio.done": 1,
+          "response.output_audio_transcript.delta": 33,
+          "response.output_audio_transcript.done": 1,
+          "response.output_item.added": 1,
+          "response.output_item.done": 1,
+          "session.created": 1,
+          "session.updated": 1
         },
-        "tool_result": {
-          "steps": [
-            "Choose the joint account type",
-            "Have both applicants ready with ID",
-            "Apply in the secure app or visit a branch",
-            "Review and accept disclosures together"
-          ]
-        },
-        "assistant_response": "To start, choose the account type, have both applicants’ IDs ready, then apply in the secure app or visit a branch.",
-        "postcall_actions": [
-          "Send joint account getting-started checklist"
-        ]
+        "response_audio_path": "docs/demo/output/responses/call_minds14_4.response.wav"
       },
       "replay": {
         "call_id": "call_minds14_4",
         "state": "closed",
         "events": [
           {
-            "event_id": "evt_call_minds14_4_3_1",
+            "event_id": "evt_call_minds14_4_audio_input_1778569221380_sv5gpq",
+            "call_id": "call_minds14_4",
+            "provider": "azure-openai-realtime",
+            "type": "audio.input",
+            "timestamp": "2026-05-12T07:00:21.380Z",
+            "correlation_id": "corr_call_minds14_4",
+            "payload": {
+              "source_audio_path": "docs/demo/dataset/audio/minds14_4.wav",
+              "input_audio_bytes": 155646,
+              "format": {
+                "type": "audio/pcm",
+                "rate": 24000
+              },
+              "realtime_deployment": "gpt-realtime-1.5"
+            }
+          },
+          {
+            "event_id": "evt_call_minds14_4_transcript_final_1778569221380_mhr7f7",
             "call_id": "call_minds14_4",
             "provider": "fake",
             "type": "transcript.final",
-            "timestamp": "2025-10-09T08:56:21.000Z",
-            "sequence": 1,
+            "timestamp": "2026-05-12T07:00:21.380Z",
             "correlation_id": "corr_call_minds14_4",
             "payload": {
               "speaker": "caller",
               "text": "how do I start a joint account",
-              "confidence": 0.96,
+              "confidence": 1,
               "is_final": true
             }
           },
           {
-            "event_id": "evt_call_minds14_4_3_2",
+            "event_id": "evt_call_minds14_4_latency_marker_1778569221380_urhmcs",
             "call_id": "call_minds14_4",
-            "provider": "fake",
+            "provider": "azure-openai-realtime",
             "type": "latency.marker",
-            "timestamp": "2025-10-09T08:56:22.000Z",
-            "sequence": 2,
+            "timestamp": "2026-05-12T07:00:21.380Z",
             "correlation_id": "corr_call_minds14_4",
             "payload": {
               "name": "user-stop-to-agent-start",
-              "value_ms": 411,
-              "budget_ms": 900
+              "value_ms": 4072,
+              "budget_ms": 5000
             }
           },
           {
-            "event_id": "evt_call_minds14_4_3_3",
+            "event_id": "evt_call_minds14_4_audio_output_1778569221380_y3efvb",
             "call_id": "call_minds14_4",
-            "provider": "fake",
-            "type": "tool.call",
-            "timestamp": "2025-10-09T08:56:23.000Z",
-            "sequence": 3,
+            "provider": "azure-openai-realtime",
+            "type": "audio.output",
+            "timestamp": "2026-05-12T07:00:21.380Z",
             "correlation_id": "corr_call_minds14_4",
             "payload": {
-              "tool_call_id": "tool_minds14_4",
-              "tool_name": "get_joint_account_start_steps",
-              "arguments": {
-                "channel": "general"
-              }
+              "response_audio_path": "docs/demo/output/responses/call_minds14_4.response.wav",
+              "output_audio_bytes": 357600,
+              "format": {
+                "type": "audio/pcm",
+                "rate": 24000
+              },
+              "realtime_model": "gpt-realtime-1.5-2026-02-23"
             }
           },
           {
-            "event_id": "evt_call_minds14_4_3_4",
+            "event_id": "evt_call_minds14_4_transcript_final_1778569221380_hoq56r",
             "call_id": "call_minds14_4",
-            "provider": "fake",
-            "type": "tool.result",
-            "timestamp": "2025-10-09T08:56:24.000Z",
-            "sequence": 4,
-            "correlation_id": "corr_call_minds14_4",
-            "payload": {
-              "tool_call_id": "tool_minds14_4",
-              "result": {
-                "steps": [
-                  "Choose the joint account type",
-                  "Have both applicants ready with ID",
-                  "Apply in the secure app or visit a branch",
-                  "Review and accept disclosures together"
-                ]
-              }
-            }
-          },
-          {
-            "event_id": "evt_call_minds14_4_3_5",
-            "call_id": "call_minds14_4",
-            "provider": "fake",
+            "provider": "azure-openai-realtime",
             "type": "transcript.final",
-            "timestamp": "2025-10-09T08:56:25.000Z",
-            "sequence": 5,
+            "timestamp": "2026-05-12T07:00:21.380Z",
             "correlation_id": "corr_call_minds14_4",
             "payload": {
               "speaker": "assistant",
-              "text": "To start, choose the account type, have both applicants’ IDs ready, then apply in the secure app or visit a branch.",
-              "confidence": 0.98,
+              "text": "To start a joint account, you’ll both need to provide identification and personal details at your bank or via an online application form. [queue: account_opening]",
+              "confidence": 1,
               "is_final": true
             }
           },
           {
-            "event_id": "evt_call_minds14_4_3_6",
+            "event_id": "evt_call_minds14_4_call_closing_1778569221380_ufnk0m",
             "call_id": "call_minds14_4",
-            "provider": "fake",
-            "type": "latency.marker",
-            "timestamp": "2025-10-09T08:56:26.000Z",
-            "sequence": 6,
-            "correlation_id": "corr_call_minds14_4",
-            "payload": {
-              "name": "first-audio",
-              "value_ms": 501,
-              "budget_ms": 900
-            }
-          },
-          {
-            "event_id": "evt_call_minds14_4_3_7",
-            "call_id": "call_minds14_4",
-            "provider": "fake",
+            "provider": "azure-openai-realtime",
             "type": "call.closing",
-            "timestamp": "2025-10-09T08:56:27.000Z",
-            "sequence": 7,
+            "timestamp": "2026-05-12T07:00:21.380Z",
             "correlation_id": "corr_call_minds14_4",
             "payload": {}
           },
           {
-            "event_id": "evt_call_minds14_4_3_8",
+            "event_id": "evt_call_minds14_4_call_closed_1778569221380_6o7jmo",
             "call_id": "call_minds14_4",
-            "provider": "fake",
+            "provider": "azure-openai-realtime",
             "type": "call.closed",
-            "timestamp": "2025-10-09T08:56:28.000Z",
-            "sequence": 8,
+            "timestamp": "2026-05-12T07:00:21.380Z",
             "correlation_id": "corr_call_minds14_4",
             "payload": {}
           },
           {
-            "event_id": "evt_post_summary_1778563176990_wnaz9lfo",
+            "event_id": "evt_post_summary_1778569221388_w14ok562",
             "call_id": "call_minds14_4",
             "provider": "fake",
             "type": "postcall.ready",
-            "timestamp": "2026-05-12T05:19:36.990Z",
+            "timestamp": "2026-05-12T07:00:21.388Z",
             "correlation_id": "corr_call_minds14_4",
             "payload": {
               "summary_version": "v1",
-              "summary_text": "caller: how do I start a joint account | assistant: To start, choose the account type, have both applicants’ IDs ready, then apply in the secure app or visit a branch.",
+              "summary_text": "caller: how do I start a joint account | assistant: To start a joint account, you’ll both need to provide identification and personal details at your bank or via an online application form. [queue: account_opening]",
               "final_disposition": "auto_resolved",
               "action_items": [
                 "No handoff occurred; verify autonomous resolution and disposition tagging."
@@ -1124,59 +841,35 @@
             "speaker": "caller",
             "text": "how do I start a joint account",
             "isFinal": true,
-            "timestamp": "2025-10-09T08:56:21.000Z",
-            "confidence": 0.96
+            "timestamp": "2026-05-12T07:00:21.380Z",
+            "confidence": 1
           },
           {
-            "sequence": 5,
+            "sequence": 2,
             "speaker": "assistant",
-            "text": "To start, choose the account type, have both applicants’ IDs ready, then apply in the secure app or visit a branch.",
+            "text": "To start a joint account, you’ll both need to provide identification and personal details at your bank or via an online application form. [queue: account_opening]",
             "isFinal": true,
-            "timestamp": "2025-10-09T08:56:25.000Z",
-            "confidence": 0.98
+            "timestamp": "2026-05-12T07:00:21.380Z",
+            "confidence": 1
           }
         ],
-        "tool_calls": [
-          {
-            "callId": "call_minds14_4",
-            "toolCallId": "tool_minds14_4",
-            "toolName": "get_joint_account_start_steps",
-            "arguments": {
-              "channel": "general"
-            },
-            "status": "completed",
-            "timestamp": "2025-10-09T08:56:23.000Z",
-            "result": {
-              "steps": [
-                "Choose the joint account type",
-                "Have both applicants ready with ID",
-                "Apply in the secure app or visit a branch",
-                "Review and accept disclosures together"
-              ]
-            }
-          }
-        ],
+        "tool_calls": [],
         "latency_markers": [
           {
             "name": "user-stop-to-agent-start",
-            "value_ms": 411,
-            "budget_ms": 900
-          },
-          {
-            "name": "first-audio",
-            "value_ms": 501,
-            "budget_ms": 900
+            "value_ms": 4072,
+            "budget_ms": 5000
           }
         ],
         "post_summary": {
-          "event_id": "evt_post_summary_1778563176990_wnaz9lfo",
+          "event_id": "evt_post_summary_1778569221388_w14ok562",
           "event_type": "postcall.ready",
-          "occurred_at": "2026-05-12T05:19:36.990Z",
+          "occurred_at": "2026-05-12T07:00:21.388Z",
           "call_id": "call_minds14_4",
           "correlation_id": "corr_call_minds14_4",
           "payload": {
             "summary_version": "v1",
-            "summary_text": "caller: how do I start a joint account | assistant: To start, choose the account type, have both applicants’ IDs ready, then apply in the secure app or visit a branch.",
+            "summary_text": "caller: how do I start a joint account | assistant: To start a joint account, you’ll both need to provide identification and personal details at your bank or via an online application form. [queue: account_opening]",
             "final_disposition": "auto_resolved",
             "action_items": [
               "No handoff occurred; verify autonomous resolution and disposition tagging."
@@ -1193,17 +886,16 @@
   ],
   "summary": {
     "calls_processed": 4,
-    "total_events": 38,
-    "handoffs": 1,
+    "control_plane_events": 32,
+    "realtime_events": 298,
+    "output_audio_bytes": 1584000,
     "event_counts": {
+      "audio.input": 4,
+      "audio.output": 4,
       "call.closed": 4,
       "call.closing": 4,
-      "handoff.accepted": 1,
-      "handoff.requested": 1,
-      "latency.marker": 8,
+      "latency.marker": 4,
       "postcall.ready": 4,
-      "tool.call": 4,
-      "tool.result": 4,
       "transcript.final": 8
     }
   }

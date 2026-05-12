@@ -10,7 +10,9 @@ It is a TypeScript starter kit for production voice agents across WebRTC, teleph
 
 ## Demo
 
-This demo uses a small sample from [PolyAI/minds14](https://huggingface.co/datasets/PolyAI/minds14), a CC BY 4.0 spoken banking dataset, and runs it through Azure Foundry with `gpt-5.5`. The model plans the call handling, the local Fastify control plane replays normalized voice events, and the output is written to `docs/demo`.
+This demo uses a small sample from [PolyAI/minds14](https://huggingface.co/datasets/PolyAI/minds14), a CC BY 4.0 spoken banking dataset. The script streams the WAV audio clips to an Azure OpenAI Realtime deployment (`gpt-realtime-1.5`), saves the model's audio replies, then replays concise normalized events through the local Fastify control plane.
+
+This is the real audio path: WAV file -> PCM16 -> Azure Realtime WebSocket -> model audio output -> normalized event replay.
 
 ![Azure Foundry demo overview](docs/demo/screenshots/azure-demo-overview.png)
 
@@ -18,15 +20,23 @@ This demo uses a small sample from [PolyAI/minds14](https://huggingface.co/datas
 
 ![Demo output](docs/demo/screenshots/azure-demo-output.png)
 
-Video:
+Video with realtime model audio:
 
 [Watch the MP4 walkthrough](docs/demo/realtime-voice-agent-demo.mp4)
 
 <video src="docs/demo/realtime-voice-agent-demo.mp4" controls></video>
 
+Listen to the combined model output:
+
+[Combined realtime output WAV](docs/demo/output/realtime-output.wav)
+
+<audio src="docs/demo/output/realtime-output.wav" controls></audio>
+
 Direct files:
 
 - `docs/demo/realtime-voice-agent-demo.mp4`
+- `docs/demo/output/realtime-output.wav`
+- `docs/demo/output/responses/*.wav`
 - `docs/demo/azure-foundry-demo.md`
 - `docs/demo/azure-foundry-demo.json`
 - `docs/demo/output/replays.json`
@@ -37,7 +47,7 @@ Run it again:
 AZURE_AI_RESOURCE_GROUP=<resource-group> \
 AZURE_AI_RESOURCE_NAME=<foundry-resource-name> \
 OPENAI_BASE_URL=https://<resource>.services.ai.azure.com/openai/v1 \
-OPENAI_MODEL=gpt-5.5 \
+AZURE_OPENAI_REALTIME_DEPLOYMENT=gpt-realtime-1.5 \
 npm run demo:azure
 ```
 
@@ -200,7 +210,7 @@ The split is deliberate:
 | --- | --- | --- |
 | Fake/local | Event adapter | Used by tests, evals, and local workflows |
 | OpenAI Realtime | Event adapter | Audio, transcript, interruption, and tool-call event mapping |
-| Azure OpenAI Realtime | Event adapter | Same normalized event surface as OpenAI Realtime |
+| Azure OpenAI Realtime | Event adapter + WebSocket audio helper | Streams PCM16 audio to a realtime deployment and captures audio/transcript output |
 | Gemini Live | Event adapter | Transcript, interruption, and output event mapping |
 | Twilio Media Streams | Event adapter | Start, media, mark, and stop event mapping |
 | LiveKit | Event adapter | Transcript and handoff-style event mapping |

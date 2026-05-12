@@ -1,21 +1,21 @@
 import { execFileSync, spawn } from "node:child_process";
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, writeFile } from "node:fs/promises";
+import { createRequire } from "node:module";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
+const require = createRequire(import.meta.url);
 const demoDir = join(root, "docs", "demo");
 const datasetDir = join(demoDir, "dataset");
 const audioDir = join(datasetDir, "audio");
 const outputDir = join(demoDir, "output");
+const responseAudioDir = join(outputDir, "responses");
 
 const datasetUrl =
   "https://datasets-server.huggingface.co/rows?dataset=PolyAI%2Fminds14&config=en-US&split=train&offset=0&length=4";
 const defaultBaseUrl = "https://chainscore-team-resource.services.ai.azure.com/openai/v1";
-
-function requiredEnv(name, fallback) {
-  return process.env[name] ?? fallback;
-}
+const defaultRealtimeDeployment = "gpt-realtime-1.5";
 
 function getAzureKeyFromCli() {
   const resourceGroup = process.env.AZURE_AI_RESOURCE_GROUP;
@@ -47,18 +47,6 @@ function getAzureKeyFromCli() {
   }
 }
 
-function parseJsonBlock(text) {
-  try {
-    return JSON.parse(text);
-  } catch {
-    const match = text.match(/\{[\s\S]*\}/);
-    if (!match) {
-      throw new Error("Model response did not contain JSON.");
-    }
-    return JSON.parse(match[0]);
-  }
-}
-
 async function fetchJson(url, options) {
   const response = await fetch(url, options);
   const body = await response.text();
@@ -76,7 +64,7 @@ async function downloadDataset() {
       id: `minds14_${index + 1}`,
       row_idx: item.row_idx,
       source_path: item.row.path,
-      audio_url: audio?.src ?? null,
+      download_audio_url: audio?.src ?? null,
       audio_type: audio?.type ?? null,
       transcription: item.row.english_transcription ?? item.row.transcription,
       intent_class: item.row.intent_class,
@@ -86,10 +74,10 @@ async function downloadDataset() {
 
   await mkdir(audioDir, { recursive: true });
   for (const row of rows) {
-    if (!row.audio_url) {
+    if (!row.download_audio_url) {
       continue;
     }
-    const audioResponse = await fetch(row.audio_url);
+    const audioResponse = await fetch(row.download_audio_url);
     if (!audioResponse.ok) {
       continue;
     }
@@ -97,6 +85,7 @@ async function downloadDataset() {
     const audioPath = join(audioDir, `${row.id}.wav`);
     await writeFile(audioPath, buffer);
     row.local_audio = `docs/demo/dataset/audio/${row.id}.wav`;
+    delete row.download_audio_url;
   }
 
   const dataset = {
@@ -111,7 +100,73 @@ async function downloadDataset() {
   return dataset;
 }
 
-async function callAzureModel(dataset) {
+function loadAdapterPackage() {
+  execFileSync("npm", ["run", "build"], { cwd: root, stdio: "inherit" });
+  return require(join(root, "packages", "adapters", "dist", "index.js"));
+}
+
+function convertWavToPcm16(audioPath) {
+  return execFileSync(
+    "ffmpeg",
+    [
+      "-hide_banner",
+      "-loglevel",
+      "error",
+      "-i",
+      audioPath,
+      "-f",
+      "s16le",
+      "-acodec",
+      "pcm_s16le",
+      "-ac",
+      "1",
+      "-ar",
+      "24000",
+      "pipe:1"
+    ],
+    { cwd: root, maxBuffer: 20 * 1024 * 1024 }
+  );
+}
+
+function outputAudioFromEvents(rawEvents) {
+  const chunks = [];
+  for (const event of rawEvents) {
+    if (event.type === "response.output_audio.delta" && typeof event.delta === "string") {
+      chunks.push(Buffer.from(event.delta, "base64"));
+    }
+  }
+  return Buffer.concat(chunks);
+}
+
+function countEventTypes(events) {
+  const counts = {};
+  for (const event of events) {
+    const type = typeof event.type === "string" ? event.type : "unknown";
+    counts[type] = (counts[type] ?? 0) + 1;
+  }
+  return Object.fromEntries(Object.entries(counts).sort());
+}
+
+function wavFromPcm16(pcm, sampleRate = 24000) {
+  const header = Buffer.alloc(44);
+  const dataSize = pcm.byteLength;
+  header.write("RIFF", 0);
+  header.writeUInt32LE(36 + dataSize, 4);
+  header.write("WAVE", 8);
+  header.write("fmt ", 12);
+  header.writeUInt32LE(16, 16);
+  header.writeUInt16LE(1, 20);
+  header.writeUInt16LE(1, 22);
+  header.writeUInt32LE(sampleRate, 24);
+  header.writeUInt32LE(sampleRate * 2, 28);
+  header.writeUInt16LE(2, 32);
+  header.writeUInt16LE(16, 34);
+  header.write("data", 36);
+  header.writeUInt32LE(dataSize, 40);
+  return Buffer.concat([header, pcm]);
+}
+
+async function runRealtimeTurns(dataset, adapterPackage) {
   const apiKey =
     process.env.OPENAI_API_KEY ??
     process.env.AZURE_OPENAI_API_KEY ??
@@ -122,75 +177,56 @@ async function callAzureModel(dataset) {
     );
   }
 
-  const baseUrl = requiredEnv("OPENAI_BASE_URL", defaultBaseUrl).replace(/\/$/, "");
-  const model = requiredEnv("OPENAI_MODEL", "gpt-5.5");
-  const url = `${baseUrl}/chat/completions`;
-  const prompt = {
-    dataset: {
-      source: dataset.source,
-      license: dataset.license,
-      rows: dataset.rows.map((row) => ({
-        id: row.id,
-        transcription: row.transcription,
-        intent_class: row.intent_class
-      }))
-    },
-    instructions: [
-      "You are producing a voice-agent control-plane demo from short banking audio transcripts.",
-      "Return only valid JSON.",
-      "Do not invent secrets, card numbers, or private account data.",
-      "For each row, classify the caller intent in plain English, propose a queue, propose one safe tool call, propose the tool result, and write one concise assistant response.",
-      "Mark exactly one call as needs_handoff=true when a human should take over.",
-      "Keep assistant responses practical and short."
-    ],
-    schema: {
-      calls: [
-        {
-          id: "same id as input",
-          intent_label: "plain English intent",
-          queue: "routing queue",
-          needs_handoff: false,
-          handoff_reason: "empty unless handoff is needed",
-          tool_name: "snake_case tool name",
-          tool_arguments: {},
-          tool_result: {},
-          assistant_response: "short response",
-          postcall_actions: ["short action item"]
-        }
-      ],
-      demo_summary: "one sentence"
+  const endpoint = (process.env.OPENAI_BASE_URL ?? process.env.AZURE_OPENAI_ENDPOINT ?? defaultBaseUrl).replace(/\/$/, "");
+  const deployment =
+    process.env.AZURE_OPENAI_REALTIME_DEPLOYMENT ??
+    process.env.OPENAI_REALTIME_MODEL ??
+    defaultRealtimeDeployment;
+
+  await mkdir(responseAudioDir, { recursive: true });
+  const turns = [];
+
+  for (const row of dataset.rows) {
+    if (!row.local_audio) {
+      throw new Error(`Dataset row ${row.id} did not include local audio.`);
     }
-  };
+    const inputPath = join(root, row.local_audio);
+    const inputPcm16 = convertWavToPcm16(inputPath);
+    const result = await adapterPackage.runAzureRealtimeAudioTurn({
+      endpoint,
+      deployment,
+      apiKey,
+      inputPcm16,
+      instructions:
+        "You are a practical banking voice agent for account-opening support. The audio can be noisy. When the caller asks about a joint account, treat it as a bank account request, not a phone-call request. Do not ask for account numbers, card numbers, or secrets.",
+      responseInstructions:
+        "Reply in one short sentence. Include the likely routing queue in square brackets as [queue: queue_name]. Use [queue: account_opening] for joint-account setup questions.",
+      voice: process.env.AZURE_OPENAI_REALTIME_VOICE ?? "alloy",
+      timeoutMs: Number(process.env.AZURE_OPENAI_REALTIME_TIMEOUT_MS ?? 45_000)
+    });
+    const responsePcm16 = outputAudioFromEvents(result.rawEvents);
+    const responseAudioPath = `docs/demo/output/responses/call_${row.id}.response.wav`;
+    await writeFile(join(root, responseAudioPath), wavFromPcm16(responsePcm16));
 
-  const response = await fetchJson(url, {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-      "api-key": apiKey
-    },
-    body: JSON.stringify({
-      model,
-      messages: [
-        {
-          role: "system",
-          content: "Return compact JSON for a realtime voice-agent demo. No markdown."
-        },
-        {
-          role: "user",
-          content: JSON.stringify(prompt)
-        }
-      ],
-      max_completion_tokens: 3500
-    })
-  });
+    turns.push({
+      call_id: `call_${row.id}`,
+      source_row: row,
+      realtime: {
+        endpoint_host: new URL(endpoint).host,
+        deployment,
+        model: result.model ?? deployment,
+        duration_ms: result.durationMs,
+        input_audio_bytes: result.inputAudioBytes,
+        output_audio_bytes: result.outputAudioBytes,
+        output_transcript: result.outputTranscript,
+        raw_event_count: result.rawEvents.length,
+        raw_event_counts: countEventTypes(result.rawEvents),
+        response_audio_path: responseAudioPath
+      }
+    });
+  }
 
-  const content = response.choices?.[0]?.message?.content ?? "";
-  return {
-    model_request: model,
-    model_response: response.model ?? model,
-    usage: response.usage,
-    generated: parseJsonBlock(content)
-  };
+  return turns;
 }
 
 async function waitForHealth(port) {
@@ -221,60 +257,26 @@ async function postJson(baseUrl, path, body) {
   return JSON.parse(text);
 }
 
-function event(callId, index, sequence, type, payload) {
+function event(callId, type, payload, provider = "azure-openai-realtime") {
   return {
-    event_id: `evt_${callId}_${index}_${sequence}`,
+    event_id: `evt_${callId}_${type.replaceAll(".", "_")}_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`,
     call_id: callId,
+    provider,
     correlation_id: `corr_${callId}`,
-    sequence,
     type,
-    timestamp: new Date(1760000000000 + index * 60_000 + sequence * 1000).toISOString(),
+    timestamp: new Date().toISOString(),
     payload
   };
 }
 
-function buildCallEvents(call, row, index) {
-  const callId = `call_${call.id}`;
-  const events = [
-    event(callId, index, 1, "transcript.final", {
-      speaker: "caller",
-      text: row.transcription,
-      confidence: 0.96,
-      is_final: true
-    }),
-    event(callId, index, 2, "latency.marker", {
-      name: "user-stop-to-agent-start",
-      value_ms: 318 + index * 31,
-      budget_ms: 900
-    }),
-    event(callId, index, 3, "tool.call", {
-      tool_call_id: `tool_${call.id}`,
-      tool_name: call.tool_name,
-      arguments: call.tool_arguments
-    }),
-    event(callId, index, 4, "tool.result", {
-      tool_call_id: `tool_${call.id}`,
-      result: call.tool_result
-    }),
-    event(callId, index, 5, "transcript.final", {
-      speaker: "assistant",
-      text: call.assistant_response,
-      confidence: 0.98,
-      is_final: true
-    }),
-    event(callId, index, 6, "latency.marker", {
-      name: "first-audio",
-      value_ms: 420 + index * 27,
-      budget_ms: 900
-    })
-  ];
-  return events;
+function queueFromTranscript(transcript) {
+  const match = transcript.match(/\[queue:\s*([^\]]+)\]/i);
+  return match?.[1]?.trim() || "banking_support";
 }
 
-async function runControlPlane(dataset, generated) {
+async function runControlPlane(turns) {
   const port = Number(process.env.DEMO_PORT ?? 8123);
   const baseUrl = `http://127.0.0.1:${port}`;
-  execFileSync("npm", ["run", "build"], { cwd: root, stdio: "inherit" });
   const server = spawn("node", ["packages/server/dist/index.js"], {
     cwd: root,
     env: { ...process.env, PORT: String(port), HOST: "127.0.0.1" },
@@ -284,19 +286,19 @@ async function runControlPlane(dataset, generated) {
   try {
     await waitForHealth(port);
     const replays = [];
-    for (const [index, row] of dataset.rows.entries()) {
-      const call = generated.calls.find((candidate) => candidate.id === row.id) ?? generated.calls[index];
-      const callId = `call_${row.id}`;
+    for (const turn of turns) {
+      const callId = turn.call_id;
+      const queue = queueFromTranscript(turn.realtime.output_transcript);
       await postJson(baseUrl, "/api/calls/start", {
         call_id: callId,
-        source: "minds14-azure-foundry-demo",
+        source: "minds14-azure-realtime-demo",
         caller: {
-          phone_e164: `+15550100${index + 1}`,
+          phone_e164: `+155501${turn.source_row.id.replace("minds14_", "").padStart(4, "0")}`,
           locale: "en-US"
         },
         context: {
           tenant: "voice-kit-demo",
-          queue: call.queue,
+          queue,
           request_id: `corr_${callId}`
         },
         capabilities: {
@@ -305,34 +307,42 @@ async function runControlPlane(dataset, generated) {
         }
       });
 
-      const events = buildCallEvents(call, row, index);
+      const events = [
+        event(callId, "audio.input", {
+          source_audio_path: turn.source_row.local_audio,
+          input_audio_bytes: turn.realtime.input_audio_bytes,
+          format: { type: "audio/pcm", rate: 24000 },
+          realtime_deployment: turn.realtime.deployment
+        }),
+        event(callId, "transcript.final", {
+          speaker: "caller",
+          text: turn.source_row.transcription,
+          confidence: 1,
+          is_final: true
+        }, "fake"),
+        event(callId, "latency.marker", {
+          name: "user-stop-to-agent-start",
+          value_ms: turn.realtime.duration_ms,
+          budget_ms: 5000
+        }),
+        event(callId, "audio.output", {
+          response_audio_path: turn.realtime.response_audio_path,
+          output_audio_bytes: turn.realtime.output_audio_bytes,
+          format: { type: "audio/pcm", rate: 24000 },
+          realtime_model: turn.realtime.model
+        }),
+        event(callId, "transcript.final", {
+          speaker: "assistant",
+          text: turn.realtime.output_transcript,
+          confidence: 1,
+          is_final: true
+        }),
+        event(callId, "call.closing", {}),
+        event(callId, "call.closed", {})
+      ];
+
       for (const item of events) {
         await postJson(baseUrl, `/api/calls/${callId}/events`, item);
-      }
-
-      if (call.needs_handoff) {
-        await postJson(baseUrl, `/api/calls/${callId}/handoff`, {
-          event_id: `evt_${callId}_handoff_requested`,
-          correlation_id: `corr_${callId}`,
-          type: "handoff.requested",
-          timestamp: new Date(1760000000000 + index * 60_000 + 7000).toISOString(),
-          payload: {
-            requested_by: "assistant_runtime",
-            reason_code: call.handoff_reason || "human_review_requested",
-            target_queue: "human-specialist",
-            last_transcript_seq: 6,
-            context_snapshot_uri: `memory://${callId}/context`
-          }
-        });
-        await postJson(baseUrl, `/api/calls/${callId}/events`, event(callId, index, 7, "handoff.accepted", {
-          agent_id: "human_specialist_1",
-          accept_time: new Date(1760000000000 + index * 60_000 + 8000).toISOString()
-        }));
-        await postJson(baseUrl, `/api/calls/${callId}/events`, event(callId, index, 8, "call.closing", {}));
-        await postJson(baseUrl, `/api/calls/${callId}/events`, event(callId, index, 9, "call.closed", {}));
-      } else {
-        await postJson(baseUrl, `/api/calls/${callId}/events`, event(callId, index, 7, "call.closing", {}));
-        await postJson(baseUrl, `/api/calls/${callId}/events`, event(callId, index, 8, "call.closed", {}));
       }
 
       await postJson(baseUrl, `/api/calls/${callId}/postcall`, {
@@ -342,9 +352,7 @@ async function runControlPlane(dataset, generated) {
 
       const replay = await fetchJson(`${baseUrl}/api/calls/${callId}/replay`);
       replays.push({
-        call_id: callId,
-        source_row: row,
-        model_plan: call,
+        ...turn,
         replay
       });
     }
@@ -363,38 +371,46 @@ function summarize(replays) {
   }
   return {
     calls_processed: replays.length,
-    total_events: replays.reduce((sum, item) => sum + item.replay.events.length, 0),
-    handoffs: replays.filter((item) => item.replay.state === "closed" && item.replay.events.some((eventItem) => eventItem.type === "handoff.requested")).length,
+    control_plane_events: replays.reduce((sum, item) => sum + item.replay.events.length, 0),
+    realtime_events: replays.reduce((sum, item) => sum + item.realtime.raw_event_count, 0),
+    output_audio_bytes: replays.reduce((sum, item) => sum + item.realtime.output_audio_bytes, 0),
     event_counts: Object.fromEntries([...eventCounts.entries()].sort())
   };
 }
 
 function markdownReport(demo) {
   const rows = demo.replays.map((item) => {
-    return `| ${item.call_id} | ${item.model_plan.intent_label} | ${item.model_plan.queue} | ${item.model_plan.needs_handoff ? "yes" : "no"} | ${item.replay.events.length} | ${item.replay.post_summary?.payload?.summary_text ?? ""} |`;
+    return `| ${item.call_id} | ${item.realtime.model} | ${item.realtime.raw_event_count} | ${item.realtime.output_audio_bytes} | ${item.realtime.output_transcript} |`;
   }).join("\n");
 
-  return `# Azure Foundry Demo Output
+  return `# Azure Realtime Audio Demo Output
 
 Dataset: [PolyAI/minds14](https://huggingface.co/datasets/PolyAI/minds14) (${demo.dataset.license})
 
-Model: ${demo.azure.model_response}
+Realtime deployment: ${demo.azure.deployment}
+
+Response model: ${demo.azure.model}
 
 Generated at: ${demo.generated_at}
+
+## What Ran
+
+The script streamed real WAV audio clips to Azure OpenAI Realtime over WebSocket, captured model audio output plus the output transcript, then replayed concise normalized events through the local Fastify control plane.
 
 ## Summary
 
 - Calls processed: ${demo.summary.calls_processed}
-- Events emitted: ${demo.summary.total_events}
-- Human handoffs: ${demo.summary.handoffs}
+- Realtime server events received: ${demo.summary.realtime_events}
+- Control-plane events emitted: ${demo.summary.control_plane_events}
+- Model audio bytes generated: ${demo.summary.output_audio_bytes}
 
 ## Calls
 
-| Call | Intent | Queue | Handoff | Events | Post-call summary |
-| --- | --- | --- | --- | ---: | --- |
+| Call | Model | Realtime events | Output audio bytes | Model response |
+| --- | --- | ---: | ---: | --- |
 ${rows}
 
-## Event Counts
+## Control-Plane Event Counts
 
 \`\`\`json
 ${JSON.stringify(demo.summary.event_counts, null, 2)}
@@ -405,12 +421,18 @@ ${JSON.stringify(demo.summary.event_counts, null, 2)}
 async function main() {
   await mkdir(outputDir, { recursive: true });
   const dataset = await downloadDataset();
-  const azure = await callAzureModel(dataset);
-  const replays = await runControlPlane(dataset, azure.generated);
+  const adapterPackage = loadAdapterPackage();
+  const turns = await runRealtimeTurns(dataset, adapterPackage);
+  const replays = await runControlPlane(turns);
+  const first = replays[0]?.realtime;
   const demo = {
     generated_at: new Date().toISOString(),
     dataset,
-    azure,
+    azure: {
+      deployment: first?.deployment ?? defaultRealtimeDeployment,
+      model: first?.model ?? defaultRealtimeDeployment,
+      endpoint_host: first?.endpoint_host ?? new URL(defaultBaseUrl).host
+    },
     replays,
     summary: summarize(replays)
   };

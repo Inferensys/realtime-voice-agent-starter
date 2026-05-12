@@ -4,6 +4,17 @@ import {
   SpeechModelAdapter
 } from "@inferensys/realtime-voice";
 
+export {
+  buildAzureRealtimeWebSocketUrl,
+  runAzureRealtimeAudioTurn
+} from "./azure-realtime";
+export type {
+  AzureRealtimeAudioTurnOptions,
+  AzureRealtimeAudioTurnResult,
+  AzureRealtimeUrlOptions,
+  RealtimeFunctionTool
+} from "./azure-realtime";
+
 export const knownProviders: ProviderName[] = [
   "fake",
   "openai-realtime",
@@ -136,6 +147,12 @@ class OpenAIRealtimeAdapter extends MappingAdapter {
   normalizeProviderEvent(raw: unknown, callId: string): NormalizedVoiceEvent[] {
     const body = asRecord(raw);
     const type = str(body.type, "");
+    if (type === "input_audio_buffer.committed") {
+      return [this.makeEvent(callId, "audio.input", {
+        item_id: str(body.item_id, "input_audio_item"),
+        previous_item_id: body.previous_item_id ?? undefined
+      })];
+    }
     if (type.includes("input_audio_transcription") && type.includes("completed")) {
       return [this.makeEvent(callId, "transcript.final", {
         speaker: "caller",
@@ -143,27 +160,61 @@ class OpenAIRealtimeAdapter extends MappingAdapter {
         is_final: true
       })];
     }
-    if (type === "response.audio.delta") {
-      return [this.makeEvent(callId, "audio.output", { delta: body.delta ?? "" })];
+    if (type === "response.audio.delta" || type === "response.output_audio.delta") {
+      return [this.makeEvent(callId, "audio.output", {
+        delta: body.delta ?? "",
+        item_id: body.item_id ?? undefined,
+        output_index: body.output_index ?? undefined
+      })];
     }
-    if (type === "response.audio_transcript.delta") {
+    if (
+      type === "response.audio_transcript.delta" ||
+      type === "response.output_audio_transcript.delta"
+    ) {
       return [this.makeEvent(callId, "transcript.partial", {
         speaker: "assistant",
         text: str(body.delta, ""),
         is_final: false
       })];
     }
+    if (
+      type === "response.audio_transcript.done" ||
+      type === "response.output_audio_transcript.done"
+    ) {
+      return [this.makeEvent(callId, "transcript.final", {
+        speaker: "assistant",
+        text: str(body.transcript, ""),
+        is_final: true
+      })];
+    }
     if (type === "response.function_call_arguments.done") {
       return [this.makeEvent(callId, "tool.call", {
         tool_call_id: str(body.call_id, str(body.item_id, "tool_call_unset")),
         tool_name: str(body.name, "unknown_tool"),
-        arguments: body.arguments ?? {}
+        arguments: parseToolArguments(body.arguments)
       })];
     }
     if (type === "input_audio_buffer.speech_started") {
       return [this.makeEvent(callId, "turn.interrupted", { name: "interruption-cancel", value_ms: 0 })];
     }
-    return [this.makeEvent(callId, "audio.input", { raw: body })];
+    return [];
+  }
+}
+
+function parseToolArguments(value: unknown): Record<string, unknown> {
+  if (value !== null && typeof value === "object" && !Array.isArray(value)) {
+    return value as Record<string, unknown>;
+  }
+  if (typeof value !== "string" || value.length === 0) {
+    return {};
+  }
+  try {
+    const parsed = JSON.parse(value);
+    return parsed !== null && typeof parsed === "object" && !Array.isArray(parsed)
+      ? parsed as Record<string, unknown>
+      : {};
+  } catch {
+    return { raw: value };
   }
 }
 

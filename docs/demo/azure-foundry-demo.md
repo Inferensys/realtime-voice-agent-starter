@@ -1,38 +1,43 @@
-# Azure Foundry Demo Output
+# Azure Realtime Audio Demo Output
 
 Dataset: [PolyAI/minds14](https://huggingface.co/datasets/PolyAI/minds14) (cc-by-4.0)
 
-Model: gpt-5.5-2026-04-24
+Realtime deployment: gpt-realtime-1.5
 
-Generated at: 2026-05-12T05:19:36.991Z
+Response model: gpt-realtime-1.5-2026-02-23
+
+Generated at: 2026-05-12T07:00:21.389Z
+
+## What Ran
+
+The script streamed real WAV audio clips to Azure OpenAI Realtime over WebSocket, captured model audio output plus the output transcript, then replayed concise normalized events through the local Fastify control plane.
 
 ## Summary
 
 - Calls processed: 4
-- Events emitted: 38
-- Human handoffs: 1
+- Realtime server events received: 298
+- Control-plane events emitted: 32
+- Model audio bytes generated: 1584000
 
 ## Calls
 
-| Call | Intent | Queue | Handoff | Events | Post-call summary |
-| --- | --- | --- | --- | ---: | --- |
-| call_minds14_1 | Open a joint bank account with a partner | account_opening | no | 9 | caller: I would like to set up a joint account with my partner | assistant: You can start a joint account in the secure app or at a branch. Both applicants will need ID and must provide consent. |
-| call_minds14_2 | Open a joint bank account with spouse and find where to do it | account_opening | no | 9 | caller: Henry County set up a joint account with my wife and where are they at | assistant: For a joint account with your wife, please use the branch locator to find a nearby account-opening branch in Henry County. |
-| call_minds14_3 | Request help opening a joint account by phone | account_opening_specialist | yes | 11 | caller: hi I'd like to set up a joint account with my partner I'm not seeing the option to do it on the app so I called in to get some help can I do it over the phone with you and give you the information | assistant: I’ll connect you with an account-opening specialist who can explain the next steps and handle any required identity checks. |
-| call_minds14_4 | Ask how to start a joint bank account | account_opening | no | 9 | caller: how do I start a joint account | assistant: To start, choose the account type, have both applicants’ IDs ready, then apply in the secure app or visit a branch. |
+| Call | Model | Realtime events | Output audio bytes | Model response |
+| --- | --- | ---: | ---: | --- |
+| call_minds14_1 | gpt-realtime-1.5-2026-02-23 | 71 | 362400 | To open a joint account, you'll usually both need to provide ID, visit your bank (online or in person), and sign the application together. [queue: account_opening] |
+| call_minds14_2 | gpt-realtime-1.5-2026-02-23 | 88 | 460800 | To open a joint account with your wife, you'll usually start in your bank’s mobile app or website under "Open Account" and select "Joint"; if you need help, a banker can guide you. [queue: account_opening] |
+| call_minds14_3 | gpt-realtime-1.5-2026-02-23 | 71 | 403200 | I can guide you through the process, but you’ll need to speak with our account-opening team to securely provide details over the phone. [queue: account_opening] |
+| call_minds14_4 | gpt-realtime-1.5-2026-02-23 | 68 | 357600 | To start a joint account, you’ll both need to provide identification and personal details at your bank or via an online application form. [queue: account_opening] |
 
-## Event Counts
+## Control-Plane Event Counts
 
 ```json
 {
+  "audio.input": 4,
+  "audio.output": 4,
   "call.closed": 4,
   "call.closing": 4,
-  "handoff.accepted": 1,
-  "handoff.requested": 1,
-  "latency.marker": 8,
+  "latency.marker": 4,
   "postcall.ready": 4,
-  "tool.call": 4,
-  "tool.result": 4,
   "transcript.final": 8
 }
 ```

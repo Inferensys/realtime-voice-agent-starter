@@ -90,6 +90,7 @@ export const callStartSchema = z.object({
 export const realtimeEventSchema = z.object({
   event_id: z.string().min(1),
   call_id: z.string().min(1).optional(),
+  provider: providerNameSchema.optional(),
   correlation_id: z.string().min(1).optional(),
   sequence: z.number().int().positive().optional(),
   type: normalizedEventTypeSchema.or(z.string().min(1)),
